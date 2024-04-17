@@ -1,7 +1,10 @@
+import HeaderLayout from "../../commons/compononets/header/HeaderLayout";
+
 const RegisterPage = () => {
   return (
     <>
-      <h1>Register</h1>
+      <HeaderLayout />
+      <h1>회원가입</h1>
     </>
   )
 }
