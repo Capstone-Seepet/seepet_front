@@ -1,5 +1,5 @@
-import './HeaderLayout.css'
-import {Link} from "react-router-dom";
+import "./HeaderLayout.css";
+import { Link } from "react-router-dom";
 const HeaderLayout = () => {
   return (
     <>
@@ -7,17 +7,31 @@ const HeaderLayout = () => {
         <div className="header-wrap">
           <div className="header-left">
             <Link to="/">
-              <img src="images/logo.svg" alt="Home" className="logo"/>
+              <img
+                src="images/temporaryLogo.png"
+                alt="Home"
+                className="logo"
+                style={{ width: "20px", height: "20px" }}
+              />
             </Link>
+            <div className="mainText">나의 반려일지</div>
+          </div>
+          <div className="header-mid">
+            <img
+              src="images/headerLampImg.png"
+              alt="lampImg"
+              className="lampImg"
+              style={{ width: "30%", height: "120%" }}
+            />
           </div>
           <div className="header-right">
-            <img src="images/icon_bell.svg" alt="alarm"/>
-            <img src="images/icon_people.svg" alt="mypage"/>
+            <img src="images/icon_bell.svg" alt="alarm" />
+            <img src="images/icon_people.svg" alt="mypage" />
           </div>
         </div>
       </header>
     </>
-  )
-}
+  );
+};
 
-export default HeaderLayout
+export default HeaderLayout;
