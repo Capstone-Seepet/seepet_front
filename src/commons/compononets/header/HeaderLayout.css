@@ -2,7 +2,8 @@ header {
   width: 100%;
   height: 50px;
   background-color: var(--main-color);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.3);
+  z-index: 10;
 }
 
 header .header-wrap {
@@ -32,7 +33,7 @@ header .mainText {
 header .header-right {
   display: flex;
   justify-content: space-between;
-  width: 15%;
+  width: 13%;
   margin-right: 5px;
 }
 
