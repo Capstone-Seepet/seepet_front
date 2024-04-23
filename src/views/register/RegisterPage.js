@@ -8,7 +8,6 @@ const RegisterPage = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
@@ -24,7 +23,9 @@ const RegisterPage = () => {
               <div className={style.inputWrap}>
                 <label htmlFor="">
                   아이디
-                  {errors.id ? <img src="images/icon_check_red.svg" alt="check"/> : <img src="images/icon_check.svg" alt="check"/>}
+                  {errors.id ?
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
                 </label>
                 <input type="text"
                        className={`${style.longInput} ${errors.id ? style.error: ""}`}
@@ -33,7 +34,9 @@ const RegisterPage = () => {
               <div className={style.inputWrap}>
                 <label htmlFor="">
                   이메일
-                  {errors.email ? <img src="images/icon_check_red.svg" alt="check"/> : <img src="images/icon_check.svg" alt="check"/>}
+                  {errors.email ?
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
                 </label>
                 <input type="text"
                        className={`${style.longInput} ${errors.email ? style.error: ""}`}
@@ -42,7 +45,9 @@ const RegisterPage = () => {
               <div className={style.inputWrap}>
                 <label htmlFor="">
                   이름
-                  {errors.name ? <img src="images/icon_check_red.svg" alt="check"/> : <img src="images/icon_check.svg" alt="check"/>}
+                  {errors.name ?
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
                 </label>
                 <input type="text"
                        className={`${style.longInput} ${errors.name ? style.error: ""}`}
@@ -51,7 +56,9 @@ const RegisterPage = () => {
               <div className={style.inputWrap}>
                 <label htmlFor="">
                   비밀번호
-                  {errors.password ? <img src="images/icon_check_red.svg" alt="check"/> : <img src="images/icon_check.svg" alt="check"/>}
+                  {errors.password ?
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
                 </label>
                 <input type="password"
                        className={`${style.longInput} ${errors.password ? style.error: ""}`}
@@ -60,7 +67,9 @@ const RegisterPage = () => {
               <div className={style.inputWrap}>
                 <label htmlFor="">
                   비밀번호 확인
-                  {errors.passwordCheck ? <img src="images/icon_check_red.svg" alt="check"/> : <img src="images/icon_check.svg" alt="check"/>}
+                  {errors.passwordCheck ?
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
                 </label>
                 <input type="password"
                        className={`${style.longInput} ${errors.passwordCheck ? style.error: ""}`}
@@ -70,7 +79,8 @@ const RegisterPage = () => {
                 <label htmlFor="">
                   휴대폰 번호
                   {errors.phoneStart || errors.phoneMid || errors.phoneEnd ?
-                    <img src="images/icon_check_red.svg" alt="check"/> : <img src="images/icon_check.svg" alt="check"/>}
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
                 </label>
                 <div className={style.inputBox}>
                   <input type="text"

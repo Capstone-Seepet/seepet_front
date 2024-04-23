@@ -8,7 +8,7 @@ const HeaderLayout = () => {
           <div className={style.headerLeft}>
             <Link to="/">
               <img
-                src="images/temporaryLogo.png"
+                src={process.env.PUBLIC_URL + "/images/temporaryLogo.png"}
                 alt="Home"
                 className="logo"
                 style={{ width: "20px", height: "20px" }}
@@ -18,15 +18,15 @@ const HeaderLayout = () => {
           </div>
           <div className={style.headerMid}>
             <img
-              src="images/headerLampImg.png"
+              src={process.env.PUBLIC_URL + "/images/headerLampImg.png"}
               alt="lampImg"
               className="lampImg"
               style={{ width: "30%", height: "120%" }}
             />
           </div>
           <div className={style.headerRight}>
-            <img src="images/icon_bell.svg" alt="alarm" />
-            <img src="images/icon_people.svg" alt="mypage" />
+            <img src={process.env.PUBLIC_URL + "/images/icon_bell.svg"} alt="alarm" />
+            <img src={process.env.PUBLIC_URL + "/images/icon_people.svg"} alt="mypage" />
           </div>
         </div>
       </header>
