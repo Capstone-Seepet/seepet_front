@@ -14,7 +14,7 @@ const HeaderLayout = () => {
                 style={{ width: "20px", height: "20px" }}
               />
             </Link>
-            <div className="mainText">SeePet</div>
+            <div className="mainText">DogAry</div>
           </div>
           <div className="header-mid">
             <img
