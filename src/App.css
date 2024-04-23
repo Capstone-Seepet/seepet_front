@@ -1,3 +1,13 @@
 :root {
   --main-color: #F4E59B;
 }
+
+@font-face {
+  font-family: "JejuGothic";
+  font-weight: normal;
+  src: url("./fonts/JejuGothic.ttf") format("truetype");
+}
+
+body, input {
+  font-family: JejuGothic;
+}
