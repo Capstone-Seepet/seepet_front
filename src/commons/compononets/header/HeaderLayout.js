@@ -1,11 +1,11 @@
-import "./HeaderLayout.css";
+import style from "./HeaderLayout.module.css";
 import { Link } from "react-router-dom";
 const HeaderLayout = () => {
   return (
     <>
       <header>
-        <div className="header-wrap">
-          <div className="header-left">
+        <div className={style.headerWrap}>
+          <div className={style.headerLeft}>
             <Link to="/">
               <img
                 src="images/temporaryLogo.png"
@@ -14,9 +14,9 @@ const HeaderLayout = () => {
                 style={{ width: "20px", height: "20px" }}
               />
             </Link>
-            <div className="mainText">DogAry</div>
+            <div className={style.mainText}>DogAry</div>
           </div>
-          <div className="header-mid">
+          <div className={style.headerMid}>
             <img
               src="images/headerLampImg.png"
               alt="lampImg"
@@ -24,7 +24,7 @@ const HeaderLayout = () => {
               style={{ width: "30%", height: "120%" }}
             />
           </div>
-          <div className="header-right">
+          <div className={style.headerRight}>
             <img src="images/icon_bell.svg" alt="alarm" />
             <img src="images/icon_people.svg" alt="mypage" />
           </div>
