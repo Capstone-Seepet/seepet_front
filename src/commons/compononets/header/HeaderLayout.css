@@ -1,9 +1,11 @@
 header {
   width: 100%;
-  height: 50px;
+  height: 13.33vw;
   background-color: var(--main-color);
-  box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1.67vw 3.33vw 0vw rgba(0, 0, 0, 0.3);
   z-index: 10;
+  border-bottom-left-radius: 4vw;
+  border-bottom-right-radius: 4vw;
 }
 
 header .header-wrap {
@@ -14,30 +16,32 @@ header .header-wrap {
 }
 header .header-left {
   display: flex;
-  justify-content: space-around;
-  margin-left: 5px;
-  width: 38%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 6.33vw;
 }
-
-header .logo {
-  width: 25px;
-  height: 25px;
+header .header-left .logo {
+  width: 6.67vw;
+  height: 6.67vw;
 }
-
-header .mainText {
-  margin-top: 3px;
-  margin-left: 5px;
-  font-weight: 600;
-}
-
-header .header-right {
-  display: flex;
-  justify-content: space-between;
-  width: 13%;
-  margin-right: 5px;
+header .header-left .mainText {
+  margin-left: 2.33vw;
+  font-weight: bold;
 }
 
 header .header-mid {
   text-align: right;
   padding-right: 10%;
 }
+
+header .header-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 4vw;
+}
+
+header .header-right img:not(:last-child) {
+  margin-right: 4vw;
+}
+
+
