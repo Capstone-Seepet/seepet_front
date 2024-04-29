@@ -21,11 +21,11 @@ const DogRegisterPage = () => {
                 <input type="file" id="thumbnail" name="thumbnail" />
               </div>
               <div className={style.inputWrap}>
-                <label htmlFor="name">이름</label>
+                <legend htmlFor="name">이름</legend>
                 <input type="text" name="name" className={style.longInput}/>
               </div>
               <div className={style.inputWrap}>
-                <label htmlFor="">이미지 등록</label>
+                <legend htmlFor="">이미지 등록</legend>
                 <div className={style.inputBox}>
                   <div className={style.fileWrap}>
                     <label htmlFor="image">
@@ -58,35 +58,35 @@ const DogRegisterPage = () => {
                 </div>
               </div>
               <div className={style.inputWrap}>
-                <label htmlFor="">성별</label>
+                <legend htmlFor="">성별</legend>
                 <div className={style.inputBox}>
                   <div className={style.radioWrap}>
-                    <label htmlFor="">
+                    <input type="radio" id="male" name="gender"/>
+                    <label htmlFor="male">
                       수컷
                       <img src={process.env.PUBLIC_URL + "/images/icon_gender_male.svg"} alt="male"/>
                     </label>
-                    <input type="radio"/>
                   </div>
                   <div className={style.radioWrap}>
-                    <label htmlFor="">
+                    <input type="radio" id="female" name="gender"/>
+                    <label htmlFor="female">
                       암컷
                       <img src={process.env.PUBLIC_URL + "/images/icon_gender_female.svg"} alt="male"/>
                     </label>
-                    <input type="radio"/>
                   </div>
                 </div>
               </div>
               <div className={style.inputWrap}>
-                <label htmlFor="">우리가 처음 만난 날</label>
+                <legend htmlFor="">우리가 처음 만난 날</legend>
                 <input type="date" className={style.longInput}/>
               </div>
               <div className={style.inputBox}>
                 <div className={`${style.inputWrap} ${style.doubleWrap}`}>
-                  <label htmlFor="">생년월일</label>
+                  <legend htmlFor="">생년월일</legend>
                   <input type="date" className={style.longInput}/>
                 </div>
                 <div className={`${style.inputWrap} ${style.doubleWrap}`}>
-                  <label htmlFor="">몸무게</label>
+                  <legend htmlFor="">몸무게</legend>
                   <input type="text" className={style.longInput}/>
                 </div>
               </div>
