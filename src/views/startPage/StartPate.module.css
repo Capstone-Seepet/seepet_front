@@ -1,0 +1,51 @@
+.wrap {
+  overflow: hidden;
+}
+.bottomWrap {
+  width: 100%;
+  height: 55vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.bottomWrap .startWrap {
+  position: absolute;
+  left: calc(50% - 6vh);
+  top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.bottomWrap .startWrap .startBtn {
+  width: 12vh;
+  height: 12vh;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  box-shadow: 3px 3px 5px 0vw rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottomWrap .startWrap .pawimg {
+  width: 50px;
+  height: 50px;
+  background-image: url("../../../public/images/dogPaw.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.bottomWrap .startWrap .startText {
+  margin-top: 2vh;
+  font-weight: 100;
+}
+
+.bottomImg {
+  position: absolute;
+  bottom: 0;
+  width: 110%;
+  height: 55%;
+  background: url("../../../public/images/startImg.png") no-repeat center center;
+  background-size: contain;
+}
