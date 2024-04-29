@@ -1,0 +1,67 @@
+header {
+  width: 100%;
+  height: 45vh;
+  background-color: var(--main-color);
+  box-shadow: 0 2px 3.33vw 0vw rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  border-bottom-right-radius: 4vw;
+}
+
+header .wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+/* 윗부분 레이아웃 및 이미지 삽입 */
+header .headerLeft {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* margin-left: 6.33vw; */
+}
+header .headerLeft .logo {
+  width: 6.67vw;
+  height: 6.67vw;
+}
+header .headerLeft .mainText {
+  margin-left: 2.33vw;
+  font-weight: bold;
+}
+header .lampImg {
+  position: absolute;
+  width: 7vh;
+  left: calc(50% - 3.5vh);
+  top: 0;
+}
+
+/* 헤더 텍스트 */
+header .wrap .headerTextWrap {
+  margin-top: 15vh;
+  width: 60%;
+  height: 10vh;
+  font-size: 3.5vh;
+  line-height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+header .wrap .headerTextWrap .headerText {
+  text-align: center;
+  font-weight: 500;
+}
+header .wrap .headerTextWrap .subText {
+  font-size: 1.7vh;
+  text-align: center;
+  color: #575757;
+  margin-top: 3%;
+}
