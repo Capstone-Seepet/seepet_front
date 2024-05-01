@@ -98,5 +98,17 @@
 
 /* 강아지하루요약 */
 .dogToday {
-    margin-top: 25px;
+    margin-top: 6.67vw;
+}
+.dogToday .todayCard {
+    width: 30px;
+    height: 86.67vw;
+    background-color: var(--card-color);
+    border-radius: 6.67vw;
+    box-sizing: border-box;
+    margin: 0 10px;
+    box-shadow: 2px 2px 8px 0 #00000040;
+}
+.slideWrap {
+    margin-top: 30px;
 }
