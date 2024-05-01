@@ -1,5 +1,7 @@
 :root {
   --main-color: #F4E59B;
+  --sub-color: #F4E59B66;
+  --card-color: #F9F6ED;
 }
 
 @font-face {

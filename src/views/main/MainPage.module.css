@@ -1,0 +1,102 @@
+/* SubHeader */
+.dogInfoContainer {
+    margin-top: 8vw;
+    padding: 8vw 0 3.47vw 5.87vw;
+    background-color: var(--main-color);
+    border-radius: 4vw;
+    box-shadow: 0.53vw 0.53vw 2.13vw 0 rgba(0, 0, 0, 0.25);
+}
+.dogInfoWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    padding: 4.8vw;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-bottom-left-radius: 4vw;
+    border-top-left-radius: 4vw;
+}
+.dogInfoWrap .dogThumbnailWrap {
+    margin-right: 5.33vw;
+}
+.dogInfoWrap .dogThumbnailWrap img {
+    width: 24vw;
+    height: 24vw;
+    border-radius: 50%;
+}
+.dogInfoWrap .dogTextWrap .dogAge{
+    display: block;
+    margin-bottom: 1.33vw;
+    font-size: 2.67vw;
+    color: #FF7456;
+}
+.dogInfoWrap .dogTextWrap .dogText {
+    display: block;
+    font-size: 3.2vw;
+    line-height: 1.4;
+    color: #575757;
+}
+.dogInfoWrap .dogTextWrap .dogText b {
+    font-weight: 600;
+    font-size: 4.27vw;
+}
+.dogInfoWrap .dogSubInfoWrap {
+    margin-top: 2.67vw;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+}
+.dogInfoWrap .dogSubInfoWrap li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8vw 2.67vw;
+    background-color: white;
+    border-radius: 11.73vw;
+    min-width: 16vw;
+    box-sizing: border-box;
+}
+.dogInfoWrap .dogSubInfoWrap li:not(:first-child) {
+    margin-left: 1.87vw;
+}
+.dogInfoWrap .dogSubInfoWrap li img {
+    width: 2.67vw;
+    height: 2.67vw;
+}
+.dogInfoWrap .dogSubInfoWrap li p {
+    display: block;
+    font-size: 2.13vw;
+    margin-left: 1.87vw;
+}
+.subDogWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 0.53vw;
+    padding-right: 8vw;
+}
+.subDogWrap .dogMessage {
+    position: relative;
+}
+.subDogWrap .dogMessage img{
+    width: 44vw;
+}
+.subDogWrap .dogMessage p {
+    font-size: 2.67vw;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.subDogWrap .subDogList img {
+    width: 6.67vw;
+    height: 6.67vw;
+    border-radius: 50%;
+}
+.subDogWrap .subDogList img:not(:first-child) {
+    margin-left: 3.2vw;
+}
+
+/* 강아지하루요약 */
+.dogToday {
+    margin-top: 25px;
+}
