@@ -1,11 +1,29 @@
-.slick-slide {
-    width: 225px !important;
-    margin: 0 10px;
+/* the parent */
+.slick-slide:not(.slick-active) {
+    position: relative;
+    transform: scale(0.85);
+    transition: 1s;
+}
+.slick-slide.slick-active {
+    transition: .5s;
+    transform: scale(0.95);
 }
 .slick-dots {
     position: absolute;
-    top: -45px;
+    top: -8.4vw;
     right: 0;
     width: 30%;
-    height: 10px;
+    height: 2.67vw;
+}
+.slick-dots li {
+    margin: 0;
+}
+.slick-dots li button:before {
+    color: rgba(130, 76, 47, 1);
+}
+.slick-dots li.slick-active button:before  {
+    color: #824C2F;
+}
+.slick-dots li.slick-active {
+    transform: scale(1.5);
 }

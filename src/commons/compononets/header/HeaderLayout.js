@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const HeaderLayout = () => {
   return (
     <>
-      <header>
+      <header className={style.header}>
         <div className={style.headerWrap}>
           <div className={style.headerLeft}>
             <Link to="/">
