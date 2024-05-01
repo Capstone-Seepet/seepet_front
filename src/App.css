@@ -9,7 +9,12 @@
   font-weight: normal;
   src: url("./fonts/JejuGothic.ttf") format("truetype");
 }
+@font-face {
+  font-family: "NanumBrush";
+  font-weight: normal;
+  src: url("./fonts/NanumBrushScript-Regular.ttf") format("truetype");
+}
 
 body, input {
-  font-family: JejuGothic;
+  font-family: JejuGothic, serif;
 }

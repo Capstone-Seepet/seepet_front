@@ -10,6 +10,7 @@ const MainPage = () => {
   const today = new Date();
   const formattedYear = today.getFullYear().toString().slice(-2);
   const formattedFull = `${formattedYear}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
+  const diaryFormattedFull = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
   const settings = {
     className: "center",
     centerMode: true,
@@ -97,14 +98,25 @@ const MainPage = () => {
                     <div className={style.cardHeader}>
                       <div className={style.titleWrap}>
                         <img src={process.env.PUBLIC_URL + "/images/icon_diary.svg"} alt="하루 관찰"/>
-                        <p className={style.cardTitle}>하루 관찰</p>
+                        <p className={style.cardTitle}>하루 일기</p>
                       </div>
                       <div className={style.moreWrap}>
-                        <Link to={"/"}>상태확인 하러가기</Link>
+                        <Link to={"/"}>일기 자세히 보기</Link>
                         <img src={process.env.PUBLIC_URL + "/images/icon_more.svg"} alt="더보기"/>
                       </div>
                     </div>
-                    <div className={style.cardMain}></div>
+                    <div className={style.cardMain}>
+                      <div className={style.diaryTitleWrap}>
+                        <p className="diaryDate">{diaryFormattedFull}</p>
+                        <p>날씨: 맑음</p>
+                      </div>
+                      <div className={style.diaryImageWrap}>
+                        <img src={process.env.PUBLIC_URL + "/images/testImage3.png"} alt="더보기"/>
+                      </div>
+                      <div className={style.diaryTextWrap}>
+                        <p>날씨가 따뜻했던 오늘, 언니가 나를 깨워줬어요. 너무나도 기분 좋은 아침이었어요! 그런데 아침밥을 기다리는데 시간이 조금 걸렸어요. 언니, 내 식사시간을 더 일찍 맞춰주세요! 오늘은 언니 옆에서 같이 자야지! -쵸파 드림-</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -112,14 +124,16 @@ const MainPage = () => {
                     <div className={style.cardHeader}>
                       <div className={style.titleWrap}>
                         <img src={process.env.PUBLIC_URL + "/images/icon_statistics.svg"} alt="하루 관찰"/>
-                        <p className={style.cardTitle}>하루 관찰</p>
+                        <p className={style.cardTitle}>하루 일과</p>
                       </div>
                       <div className={style.moreWrap}>
                         <Link to={"/"}>상태확인 하러가기</Link>
                         <img src={process.env.PUBLIC_URL + "/images/icon_more.svg"} alt="더보기"/>
                       </div>
                     </div>
-                    <div className={style.cardMain}></div>
+                    <div className={style.cardMain}>
+                      <circle strokeDasharray="<a> <x - a>" strokeDashoffset="<0.25 * x>"/>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -129,12 +143,18 @@ const MainPage = () => {
                         <img src={process.env.PUBLIC_URL + "/images/icon_video.svg"} alt="하루 관찰"/>
                         <p className={style.cardTitle}>하루 관찰</p>
                       </div>
-                      <div className={style.moreWrap}>
-                        <Link to={"/"}>상태확인 하러가기</Link>
-                        <img src={process.env.PUBLIC_URL + "/images/icon_more.svg"} alt="더보기"/>
+                    </div>
+                    <div className={style.cardMain}>
+                      <div className={style.videoWrap}>
+                        <img src={process.env.PUBLIC_URL + "/images/testImage2.png"} alt=""/>
+                      </div>
+                      <div className={style.buttonWrap}>
+                        <button>
+                          <img src={process.env.PUBLIC_URL + "/images/icon_play.svg"} alt=""/>
+                          <p>재생</p>
+                        </button>
                       </div>
                     </div>
-                    <div className={style.cardMain}></div>
                   </div>
                 </div>
               </Slider>
