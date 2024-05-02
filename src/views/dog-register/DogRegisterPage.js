@@ -2,13 +2,15 @@ import HeaderLayout from "../../commons/compononets/header/HeaderLayout";
 import FooterLayout from "../../commons/compononets/footer/FooterLayout";
 import style from "./DogRegisterPage.module.css"
 import {useForm} from "react-hook-form";
+import {Link, useNavigate} from "react-router-dom";
 const DogRegisterPage = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => navigate('/main');
 
   return (
     <>
