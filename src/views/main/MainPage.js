@@ -45,7 +45,7 @@ const MainPage = () => {
   const settings = {
     className: "center",
     centerMode: true,
-    infinite: false,
+    infinite: true,
     centerPadding: "50px",
     slidesToShow: 1,
     speed: 500,
