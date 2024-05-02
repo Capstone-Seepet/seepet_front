@@ -234,6 +234,12 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+/* 하루 일과 */
+.todayStatics .cardMain img{
+    width: 100%;
+    height: 335px;
+    margin-top: 5px;
+}
 /* 하루 관찰 */
 .todayObserve .cardMain {
     margin-top: 3.73vw;

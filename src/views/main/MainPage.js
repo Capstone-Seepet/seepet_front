@@ -163,12 +163,13 @@ const MainPage = () => {
                       </div>
                     </div>
                     <div className={style.cardMain}>
-                      <Doughnut  data={data}/>
+                      {/*<Doughnut  data={data}/>*/}
+                      <img src={process.env.PUBLIC_URL + "/images/testImage4.png"} alt="테스트"/>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <div className={`${style.todayCard} ${style.todayObserve}`}>
+                <div className={`${style.todayCard} ${style.todayObserve}`}>
                     <div className={style.cardHeader}>
                       <div className={style.titleWrap}>
                         <img src={process.env.PUBLIC_URL + "/images/icon_video.svg"} alt="하루 관찰"/>
