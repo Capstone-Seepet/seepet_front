@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const SharedHeader = ({ isStartPage }) => {
   return (
     <>
-      <header>
+      <header className={style.header}>
         <div className={style.wrap}>
           <div className={style.headerLeft}>
             <Link to="/">
@@ -25,7 +25,7 @@ const SharedHeader = ({ isStartPage }) => {
             <div className={style.headerTextWrap}>
               <p
                 className={style.headerText}
-                style={{ backgroundColor: "rgba:(255, 255, 255, 0.5)" }}
+                style={{ backgroundColor: "rgba(255,255,255,0.6)" }}
               >
                 반려견의 소중한 일상
               </p>
@@ -33,7 +33,7 @@ const SharedHeader = ({ isStartPage }) => {
               <p className={style.subText}>반려일지로 확인하고 기록하고!</p>
             </div>
           ) : (
-            <div></div>
+            <div className={style.loginSuccessImg}></div>
           )}
         </div>
       </header>

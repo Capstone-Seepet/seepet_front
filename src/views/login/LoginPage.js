@@ -28,13 +28,14 @@ const LoginPage = () => {
                 </form>
               </div>
               <div className={style.checkBox}>
-                <label>
+                <label className={style.customCheckbox}>
                   <input
                     type="checkbox"
                     // checked={rememberMe}
                     // onChange={handleRememberMeChange}
                     className={style.saveInformCheck}
                   />
+                  <span className={style.checkmark}></span>
                   아이디 저장
                 </label>
                 {/* 자동 로그인 체크박스 */}
@@ -52,8 +53,9 @@ const LoginPage = () => {
           {/* //mid */}
 
           <div className={style.bottom}>
-            {/* <Link to="/register">register</Link> */}
-            <button className={style.SubmitBtn}>LOGIN</button>
+            <Link to="/loginsuccess" className={style.SubmitBtn}>
+              LOGIN
+            </Link>
             <div className={style.informBox}>
               <div className={style.informLine}>
                 계정을 잊으셨나요? <Link>ID찾기</Link> 또는{" "}
