@@ -1,0 +1,265 @@
+/* Header */
+.mainHeader {
+    display: block;
+    position: relative;
+    width: 100%;
+    background-color: var(--main-color);
+    box-shadow: 0 1.67vw 3.33vw 0vw rgba(0, 0, 0, 0.3);
+    border-bottom-left-radius: 4vw;
+    border-bottom-right-radius: 4vw;
+}
+
+.mainHeader .headerWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 13.33vw;
+}
+.mainHeader .headerLeft {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 6.33vw;
+}
+.mainHeader .headerLeft .logo {
+    width: 6.67vw;
+    height: 6.67vw;
+}
+.mainHeader .headerLeft .mainText {
+    margin-left: 2.33vw;
+    font-weight: bold;
+}
+
+.mainHeader .headerMid {
+    text-align: right;
+    padding-right: 10%;
+}
+
+.mainHeader .headerRight {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 4vw;
+}
+
+.mainHeader .headerRight img:not(:last-child) {
+    margin-right: 4vw;
+}
+
+/* SubHeader */
+.dogInfoContainer {
+    padding: 1vw 0 3.47vw 5.87vw;
+    background-color: var(--main-color);
+    border-bottom-right-radius: 4vw;
+}
+.dogInfoWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    padding: 4.8vw;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-bottom-left-radius: 4vw;
+    border-top-left-radius: 4vw;
+}
+.dogInfoWrap .dogThumbnailWrap {
+    margin-right: 5.33vw;
+}
+.dogInfoWrap .dogThumbnailWrap img {
+    width: 24vw;
+    height: 24vw;
+    border-radius: 50%;
+}
+.dogInfoWrap .dogTextWrap .dogAge{
+    display: block;
+    margin-bottom: 1.33vw;
+    font-size: 2.67vw;
+    color: #FF7456;
+}
+.dogInfoWrap .dogTextWrap .dogText {
+    display: block;
+    font-size: 3.2vw;
+    line-height: 1.4;
+    color: #575757;
+}
+.dogInfoWrap .dogTextWrap .dogText b {
+    font-weight: 600;
+    font-size: 4.27vw;
+}
+.dogInfoWrap .dogSubInfoWrap {
+    margin-top: 2.67vw;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+}
+.dogInfoWrap .dogSubInfoWrap li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8vw 2.67vw;
+    background-color: white;
+    border-radius: 11.73vw;
+    min-width: 16vw;
+    box-sizing: border-box;
+}
+.dogInfoWrap .dogSubInfoWrap li:not(:first-child) {
+    margin-left: 1.87vw;
+}
+.dogInfoWrap .dogSubInfoWrap li img {
+    width: 2.67vw;
+    height: 2.67vw;
+}
+.dogInfoWrap .dogSubInfoWrap li p {
+    display: block;
+    font-size: 2.13vw;
+    margin-left: 1.87vw;
+}
+.subDogWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 0.53vw;
+    padding-right: 8vw;
+}
+.subDogWrap .dogMessage {
+    position: relative;
+}
+.subDogWrap .dogMessage img{
+    width: 44vw;
+}
+.subDogWrap .dogMessage p {
+    font-size: 2.67vw;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.subDogWrap .subDogList img {
+    width: 6.67vw;
+    height: 6.67vw;
+    border-radius: 50%;
+}
+.subDogWrap .subDogList img:not(:first-child) {
+    margin-left: 3.2vw;
+}
+
+/* 강아지하루요약 layout */
+.dogToday {
+    margin-top: 6.67vw;
+}
+.dogToday .title {
+    font-size: 3.47vw;
+    color: #262626CC;
+    padding-left: 8.53vw;
+}
+.dogToday .todayCard {
+    height: 86.67vw;
+    padding: 5.33vw 4vw 4vw 4vw;
+    background-color: var(--card-color);
+    border-radius: 6.67vw;
+    box-shadow: 0.53vw 0.53vw 2.13vw 0 #00000040;
+}
+.slideWrap {
+    margin-top: 3vw;
+}
+.dogToday .todayCard .cardHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.todayCard .cardHeader .titleWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.todayCard .cardHeader .titleWrap img {
+    width: 4vw;
+    height: 4vw;
+    margin-right: 1.33vw;
+}
+.todayCard .cardHeader .titleWrap .cardTitle {
+    font-size: 3.2vw;
+}
+.todayCard .cardHeader .moreWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.todayCard .cardHeader .moreWrap a {
+    font-size: 2.13vw;
+    color: black;
+    text-decoration: none;
+}
+.todayCard .cardHeader .moreWrap img {
+    width: 5.33vw;
+    height: 0.8vw;
+}
+/* 하루 일기 */
+.todayDiary .cardMain {
+    margin-top: 1.33vw;
+}
+.todayDiary .cardMain .diaryTitleWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.33vw 4vw 0.53vw 5.33vw;
+    box-shadow: 0 0 0.53vw 0 #00000040;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.todayDiary .cardMain .diaryTitleWrap p {
+    font-size: 4vw;
+    font-family: NanumBrush, serif;
+}
+.todayDiary .cardMain .diaryImageWrap img{
+    width: 100%;
+    height: 56vw;
+    margin-top: 1.87vw;
+}
+.todayDiary .cardMain .diaryTextWrap {
+    width: 100%;
+    margin-top: 1.33vw;
+    padding: 1.33vw 4vw 0.53vw 5.33vw;
+    box-shadow: 0 0 0.53vw 0 #00000040;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.todayDiary .cardMain .diaryTextWrap p {
+    font-size: 4vw;
+    text-align: center;
+    line-height: 1.3;
+    font-family: NanumBrush, serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+/* 하루 관찰 */
+.todayObserve .cardMain {
+    margin-top: 3.73vw;
+}
+.todayObserve .cardMain .videoWrap {
+    height: 51.33vw;
+    border: 0.8vw solid #EFE095;
+}
+.todayObserve .cardMain .videoWrap img {
+    width: 100%;
+    height: 100%;
+}
+.todayObserve .cardMain .buttonWrap {
+    width: 100%;
+    height: 22.67vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.67vw;
+    background-color: white;
+    box-shadow: 0 0 0.53vw 0 #00000040;
+}
+.todayObserve .cardMain .buttonWrap button {
+    background-color: white;
+}
+.todayObserve .cardMain .buttonWrap p {
+    margin-top: 1.33vw;
+    font-size: 2.13vw;
+}

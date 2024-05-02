@@ -1,7 +1,15 @@
 import HeaderLayout from "../../commons/compononets/header/HeaderLayout";
 import FooterLayout from "../../commons/compononets/footer/FooterLayout";
 import style from "./DogRegisterPage.module.css"
+import {useForm} from "react-hook-form";
 const DogRegisterPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
+
   return (
     <>
       <HeaderLayout />
@@ -9,7 +17,7 @@ const DogRegisterPage = () => {
         <div className={style.innerWrap}>
           <h1 className={style.title}>반려동물 정보 입력</h1>
           <div className={style.container}>
-            <form action="">
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className={style.thumbnailWrap}>
                 <label htmlFor="thumbnail">
                   <img src={process.env.PUBLIC_URL + "/images/icon_plus.svg"} alt="plus"/>
@@ -21,11 +29,18 @@ const DogRegisterPage = () => {
                 <input type="file" id="thumbnail" name="thumbnail" />
               </div>
               <div className={style.inputWrap}>
-                <legend htmlFor="name">이름</legend>
-                <input type="text" name="name" className={style.longInput}/>
+                <legend>
+                  이름
+                  {errors.name ?
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
+                </legend>
+                <input type="text" name="name"
+                       className={`${style.longInput} ${errors.name ? style.error: ""}`}
+                       {...register("name", {required: true})}/>
               </div>
               <div className={style.inputWrap}>
-                <legend htmlFor="">이미지 등록</legend>
+                <legend>이미지 등록</legend>
                 <div className={style.inputBox}>
                   <div className={style.fileWrap}>
                     <label htmlFor="image">
@@ -58,7 +73,7 @@ const DogRegisterPage = () => {
                 </div>
               </div>
               <div className={style.inputWrap}>
-                <legend htmlFor="">성별</legend>
+                <legend>성별</legend>
                 <div className={style.inputBox}>
                   <div className={style.radioWrap}>
                     <input type="radio" id="male" name="gender"/>
@@ -77,17 +92,36 @@ const DogRegisterPage = () => {
                 </div>
               </div>
               <div className={style.inputWrap}>
-                <legend htmlFor="">우리가 처음 만난 날</legend>
-                <input type="date" className={style.longInput}/>
+                <legend>
+                  우리가 처음 만난 날
+                  {errors.firstMeeting ?
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
+                    <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
+                </legend>
+                <input type="date"  className={`${style.longInput} ${errors.firstMeeting ? style.error: ""}`}
+                       {...register("firstMeeting", {required: true})}/>
               </div>
               <div className={style.inputBox}>
                 <div className={`${style.inputWrap} ${style.doubleWrap}`}>
-                  <legend htmlFor="">생년월일</legend>
-                  <input type="date" className={style.longInput}/>
+                  <legend>
+                    생년월일
+                    {errors.birth ?
+                      <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
+                      <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
+                  </legend>
+                  <input type="date"
+                         className={`${style.longInput} ${errors.birth ? style.error: ""}`}
+                         {...register("birth", {required: true})}/>
                 </div>
                 <div className={`${style.inputWrap} ${style.doubleWrap}`}>
-                  <legend htmlFor="">몸무게</legend>
-                  <input type="text" className={style.longInput}/>
+                  <legend>
+                    몸무게
+                    {errors.weight ?
+                      <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
+                      <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
+                  </legend>
+                  <input type="text" className={`${style.longInput} ${errors.weight ? style.error: ""}`}
+                         {...register("weight", {required: true})}/>
                 </div>
               </div>
               <div className={style.btnBox}>

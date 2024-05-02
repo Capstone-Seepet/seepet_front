@@ -21,67 +21,67 @@ const RegisterPage = () => {
           <div className={style.container}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className={style.inputWrap}>
-                <label htmlFor="">
+                <legend>
                   아이디
                   {errors.id ?
                     <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
                     <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
-                </label>
+                </legend>
                 <input type="text"
                        className={`${style.longInput} ${errors.id ? style.error: ""}`}
                        {...register("id", {required: true})}/>
               </div>
               <div className={style.inputWrap}>
-                <label htmlFor="">
+                <legend>
                   이메일
                   {errors.email ?
                     <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
                     <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
-                </label>
+                </legend>
                 <input type="text"
                        className={`${style.longInput} ${errors.email ? style.error: ""}`}
                        {...register("email", {required: true})}/>
               </div>
               <div className={style.inputWrap}>
-                <label htmlFor="">
+                <legend>
                   이름
                   {errors.name ?
                     <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
                     <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
-                </label>
+                </legend>
                 <input type="text"
                        className={`${style.longInput} ${errors.name ? style.error: ""}`}
                        {...register("name", {required: true})}/>
               </div>
               <div className={style.inputWrap}>
-                <label htmlFor="">
+                <legend>
                   비밀번호
                   {errors.password ?
                     <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
                     <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
-                </label>
+                </legend>
                 <input type="password"
                        className={`${style.longInput} ${errors.password ? style.error: ""}`}
                        {...register("password", {required: true})}/>
               </div>
               <div className={style.inputWrap}>
-                <label htmlFor="">
+                <legend>
                   비밀번호 확인
                   {errors.passwordCheck ?
                     <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
                     <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
-                </label>
+                </legend>
                 <input type="password"
                        className={`${style.longInput} ${errors.passwordCheck ? style.error: ""}`}
                        {...register("passwordCheck", {required: true})}/>
               </div>
               <div className={style.inputWrap}>
-                <label htmlFor="">
+                <legend>
                   휴대폰 번호
                   {errors.phoneStart || errors.phoneMid || errors.phoneEnd ?
                     <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
                     <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
-                </label>
+                </legend>
                 <div className={style.inputBox}>
                   <input type="text"
                          className={`${style.shortInput} ${errors.phoneStart ? style.error: ""}`}

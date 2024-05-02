@@ -1,4 +1,4 @@
-header {
+.header {
   width: 100%;
   height: 13.33vw;
   background-color: var(--main-color);
@@ -8,39 +8,39 @@ header {
   border-bottom-right-radius: 4vw;
 }
 
-header .headerWrap {
+.header .headerWrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
 }
-header .headerLeft {
+.header .headerLeft {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-left: 6.33vw;
 }
-header .headerLeft .logo {
+.header .headerLeft .logo {
   width: 6.67vw;
   height: 6.67vw;
 }
-header .headerLeft .mainText {
+.header .headerLeft .mainText {
   margin-left: 2.33vw;
   font-weight: bold;
 }
 
-header .headerMid {
+.header .headerMid {
   text-align: right;
   padding-right: 10%;
 }
 
-header .headerRight {
+.header .headerRight {
   display: flex;
   justify-content: flex-end;
   margin-right: 4vw;
 }
 
-header .headerRight img:not(:last-child) {
+.header .headerRight img:not(:last-child) {
   margin-right: 4vw;
 }
 

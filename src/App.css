@@ -1,5 +1,7 @@
 :root {
   --main-color: #F4E59B;
+  --sub-color: #F4E59B66;
+  --card-color: #F9F6ED;
 }
 
 @font-face {
@@ -7,7 +9,12 @@
   font-weight: normal;
   src: url("./fonts/JejuGothic.ttf") format("truetype");
 }
+@font-face {
+  font-family: "NanumBrush";
+  font-weight: normal;
+  src: url("./fonts/NanumBrushScript-Regular.ttf") format("truetype");
+}
 
 body, input {
-  font-family: JejuGothic;
+  font-family: JejuGothic, serif;
 }
