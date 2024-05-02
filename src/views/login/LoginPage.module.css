@@ -1,6 +1,6 @@
 .wrap {
   width: 100vw;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 100px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,6 @@
 .innerWrap {
   width: 80%;
   height: 80%;
-  margin-top: 2vh;
 }
 /* 컨테이너 */
 .container {
@@ -70,14 +69,18 @@
 .mid .checkBox {
   height: 20%;
 }
-.mid .checkBox input {
-  border-radius: 50px;
-}
+
 .mid .checkBox label {
   font-size: 0.6em;
   display: inline-block;
   width: 40%;
 }
+/* .mid .checkBox input[type="checkbox"] {
+  display: none;
+} */
+
+/* bottom */
+
 .bottom {
   height: 25%;
   display: flex;
@@ -92,6 +95,13 @@
   border-radius: 103px;
   border: none;
   background-color: var(--main-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-weight: 400;
+  font-size: 2vh;
 }
 
 .bottom .informBox {
