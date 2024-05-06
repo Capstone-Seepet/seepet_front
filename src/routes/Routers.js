@@ -9,13 +9,12 @@ import LiveStream from "../views/liveStream/liveStream";
 const Routers = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<LoginPage />}></Route>
+      <Route path="/" element={<StartPage />}></Route>
       <Route path="/main" element={<MainPage />}></Route>
       <Route path="/register" element={<RegisterPage />}></Route>
       <Route path="/dog/register" element={<DogRegisterPage />}></Route>
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/loginsuccess" element={<LoginSuccess />}></Route>
-      <Route path="/startpage" element={<StartPage />}></Route>
       <Route path="/livestream" element={<LiveStream />}></Route>
     </Routes>
   </BrowserRouter>
