@@ -33,7 +33,6 @@
 .top .logo {
   width: 90%;
   aspect-ratio: 1;
-  /* background-color: #d9d9d9; */
   background-image: url("../../../public/images/loginLogo.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -53,6 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .mid .inputBox input {
@@ -64,20 +64,51 @@
   background-color: #ededed;
   font-size: 0.6em;
   border: none;
-  box-shadow: inset 2px 2px 5px 2px rgba(0, 0, 0, 0.1); /* 입력 상자 내부에 그림자 추가 */
+  box-shadow: inset 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
 }
 .mid .checkBox {
   height: 20%;
 }
-
-.mid .checkBox label {
-  font-size: 0.6em;
-  display: inline-block;
-  width: 40%;
+.customCheckbox {
+  font-size: 0.8em;
 }
-/* .mid .checkBox input[type="checkbox"] {
+input[type="checkbox"] {
   display: none;
-} */
+}
+.customCheckbox {
+  margin-right: 2vw;
+}
+.saveInformCheck,
+.autoLoginCheck {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  text-align: center;
+  line-height: 1.4em;
+  margin-right: 2vw;
+  background-image: url("../../../public/images/orangeCheck.png");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center center;
+  border-radius: 50%;
+  border: 1px solid #ff7456;
+}
+.customCheckbox {
+  margin-right: 5vw;
+}
+input[id="check1"] + label,
+input[id="check2"] + label {
+  position: relative;
+  top: 10%;
+}
+input[id="check1"]:checked + label,
+input[id="check2"]:checked + label {
+  background-image: url("../../../public/images/whiteCheck.png");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center center;
+  background-color: #ff7456;
+}
 
 /* bottom */
 
@@ -90,8 +121,8 @@
 }
 
 .bottom .SubmitBtn {
-  width: 80%;
-  height: 40%;
+  width: 85%;
+  height: 30%;
   border-radius: 103px;
   border: none;
   background-color: var(--main-color);
@@ -100,8 +131,10 @@
   align-items: center;
   text-decoration: none;
   color: #000;
-  font-weight: 400;
+  font-weight: 200;
+  letter-spacing: 1px;
   font-size: 2vh;
+  box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.1);
 }
 
 .bottom .informBox {
@@ -114,4 +147,7 @@
 
 .bottom .informBox .informLine {
   margin-bottom: 1.5vh;
+}
+a {
+  color: #6e99c0;
 }

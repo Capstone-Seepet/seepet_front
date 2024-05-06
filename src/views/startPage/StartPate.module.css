@@ -1,5 +1,7 @@
 .wrap {
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 .bottomWrap {
   width: 100%;
@@ -28,8 +30,8 @@
   align-items: center;
 }
 .bottomWrap .startWrap .pawimg {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background-image: url("../../../public/images/dogPaw.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -39,13 +41,15 @@
 .bottomWrap .startWrap .startText {
   margin-top: 2vh;
   font-weight: 100;
+  color: #575757;
 }
 
 .bottomImg {
   position: absolute;
   bottom: 0;
-  width: 110%;
-  height: 55%;
+  left: calc(50vw - 65%);
+  width: 150%;
+  height: 70%;
   background: url("../../../public/images/startImg.png") no-repeat center center;
   background-size: contain;
 }
