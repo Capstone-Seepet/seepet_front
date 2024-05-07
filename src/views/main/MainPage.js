@@ -7,6 +7,7 @@ import "./slide.css"
 import {Link} from "react-router-dom";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import ExpendedHeader from "../../commons/compononets/ExpendedHeader/ExpendedHeader";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -55,69 +56,43 @@ const MainPage = () => {
 
   return (
     <>
-      <header className={style.mainHeader}>
-        <div className={style.headerWrap}>
-          <div className={style.headerLeft}>
-            <Link to="/">
-              <img
-                src={process.env.PUBLIC_URL + "/images/temporaryLogo.png"}
-                alt="Home"
-                className="logo"
-                style={{width: "20px", height: "20px"}}
-              />
-            </Link>
-            <div className={style.mainText}>DogAry</div>
+      <ExpendedHeader />
+      <div className={style.dogInfoContainer}>
+        <div className={style.dogInfoWrap}>
+          <div className={style.dogThumbnailWrap}>
+            <img src={process.env.PUBLIC_URL + "/images/testImage.png"} className={style.dogThumbnail} alt="Mydog"/>
           </div>
-          <div className={style.headerMid}>
-            <img
-              src={process.env.PUBLIC_URL + "/images/headerLampImg.png"}
-              alt="lampImg"
-              className="lampImg"
-              style={{width: "30%", height: "120%"}}
-            />
-          </div>
-          <div className={style.headerRight}>
-            <img src={process.env.PUBLIC_URL + "/images/icon_bell.svg"} alt="alarm"/>
-            <img src={process.env.PUBLIC_URL + "/images/icon_people.svg"} alt="mypage"/>
-          </div>
-        </div>
-        <div className={style.dogInfoContainer}>
-          <div className={style.dogInfoWrap}>
-            <div className={style.dogThumbnailWrap}>
-              <img src={process.env.PUBLIC_URL + "/images/testImage.png"} className={style.dogThumbnail} alt="Mydog"/>
-            </div>
-            <div className={style.dogTextWrap}>
-              <span className={style.dogAge}>Lv. 4</span>
-              <p className={style.dogText}><b>쵸파</b> 와 함께한지</p>
-              <p className={style.dogText}><b>1460</b> 일 째</p>
-              <ul className={style.dogSubInfoWrap}>
-                <li>
-                  <img src={process.env.PUBLIC_URL + "/images/icon_birth.svg"} alt="생일"/>
-                  <p>10/07</p>
-                </li>
-                <li>
-                  <img src={process.env.PUBLIC_URL + "/images/icon_weight.svg"} alt="몸무게"/>
-                  <p>5.3 <small>kg</small></p>
-                </li>
-                <li>
-                  <img src={process.env.PUBLIC_URL + "/images/icon_gender_female.svg"} alt="성별"/>
-                  <p>암컷</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className={style.subDogWrap}>
-            <div className={style.dogMessage}>
-              <img src={process.env.PUBLIC_URL + "/images/background_massage.svg"} alt="성별"/>
-              <p>산책가자멍!</p>
-            </div>
-            <div className={style.subDogList}>
-              <img src={process.env.PUBLIC_URL + "/images/testImage.png"} className={style.dogThumbnail} alt="Mydog"/>
-              <img src={process.env.PUBLIC_URL + "/images/testImage.png"} className={style.dogThumbnail} alt="Mydog"/>
-            </div>
+          <div className={style.dogTextWrap}>
+            <span className={style.dogAge}>Lv. 4</span>
+            <p className={style.dogText}><b>쵸파</b> 와 함께한지</p>
+            <p className={style.dogText}><b>1460</b> 일 째</p>
+            <ul className={style.dogSubInfoWrap}>
+              <li>
+                <img src={process.env.PUBLIC_URL + "/images/icon_birth.svg"} alt="생일"/>
+                <p>10/07</p>
+              </li>
+              <li>
+                <img src={process.env.PUBLIC_URL + "/images/icon_weight.svg"} alt="몸무게"/>
+                <p>5.3 <small>kg</small></p>
+              </li>
+              <li>
+                <img src={process.env.PUBLIC_URL + "/images/icon_gender_female.svg"} alt="성별"/>
+                <p>암컷</p>
+              </li>
+            </ul>
           </div>
         </div>
-      </header>
+        <div className={style.subDogWrap}>
+          <div className={style.dogMessage}>
+            <img src={process.env.PUBLIC_URL + "/images/background_massage.svg"} alt="성별"/>
+            <p>산책가자멍!</p>
+          </div>
+          <div className={style.subDogList}>
+            <img src={process.env.PUBLIC_URL + "/images/testImage.png"} className={style.dogThumbnail} alt="Mydog"/>
+            <img src={process.env.PUBLIC_URL + "/images/testImage.png"} className={style.dogThumbnail} alt="Mydog"/>
+          </div>
+        </div>
+      </div>
       <main>
         <div className={style.dogToday}>
           <p className={style.title}>재롱이의 {formattedFull}</p>
