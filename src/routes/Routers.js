@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from "../views/main/MainPage";
 import LoginPage from "../views/login/LoginPage";
 import RegisterPage from "../views/register/RegisterPage";
-import DogRegisterPage from "../views/dog-register/DogRegisterPage";
+import DogRegisterPage from "../views/dogRegister/DogRegisterPage";
 import StartPage from "../views/startPage/StartPage";
 import LoginSuccess from "../views/loginSuccess/LoginSuccess";
 import LiveStream from "../views/liveStream/liveStream";

@@ -19,6 +19,7 @@
   justify-content: flex-start;
   align-items: center;
   margin-left: 6.33vw;
+  padding-right: 2.67vw;
 }
 .header .headerLeft .logo {
   width: 6.67vw;
@@ -31,15 +32,20 @@
 
 .header .headerMid {
   text-align: right;
-  padding-right: 10%;
 }
-
+.header .headerMid .lampImg {
+  width: 10.13vw;
+  height: 20.8vw;
+}
 .header .headerRight {
   display: flex;
   justify-content: flex-end;
   margin-right: 4vw;
 }
-
+.header .headerRight img {
+  width: 5.33vw;
+  height: 5.33vw;
+}
 .header .headerRight img:not(:last-child) {
   margin-right: 4vw;
 }
