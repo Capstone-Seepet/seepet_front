@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import ExpendedHeader from "../../commons/compononets/ExpendedHeader/ExpendedHeader";
+import {externalTooltipHandler} from "./TooltipHandler";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -58,18 +59,9 @@ const MainPage = () => {
           display: false,
       },
       tooltip: {
-        titleFont: {
-          size: 12,
-        },
-        bodyFont: {
-          size: 12,
-        },
-        footerFont: {
-          // size: 10, // there is no footer by default
-        },
-        callbacks: {
-          //
-        },
+        enabled: false,
+        position: 'nearest',
+        external: externalTooltipHandler
       },
     },
   };
