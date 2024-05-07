@@ -8,7 +8,7 @@ const SharedHeader = ({ isStartPage }) => {
           <div className={style.headerLeft}>
             <Link to="/">
               <img
-                src={process.env.PUBLIC_URL + "/images/temporaryLogo.png"}
+                src={process.env.PUBLIC_URL + "/images/logo.svg"}
                 alt="Home"
                 className={style.logo}
                 style={{ width: "20px", height: "20px" }}
