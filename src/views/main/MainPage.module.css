@@ -190,10 +190,75 @@
   -webkit-box-orient: vertical;
 }
 /* 하루 일과 */
-.todayStatics .cardMain img {
+.todayStatics .cardMain {
+}
+.todayStatics .statisticsMainWrap {
+  margin-top: 1.87vw;
+  background-color: white;
+  box-shadow: 0vw 0vw 0.53vw 0vw #00000040;
+  padding: 2.13vw 1.33vw;
+}
+.todayStatics .statisticsMainWrap .statisticsTitleWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2.67vw;
+}
+.todayStatics .statisticsMainWrap .dogEmotion {
+  width: 20%;
+  margin-right: 2%;
+}
+.todayStatics .statisticsMainWrap .dogMessage {
+  width: 78%;
+  position: relative;
+}
+.todayStatics .statisticsMainWrap .dogMessage img {
   width: 100%;
-  height: 89.33vw;
+  position: absolute;
+  top: 134%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.todayStatics .statisticsMainWrap .dogMessage p {
+  width: 100%;
+  font-family: NanumBrush, serif;
+  font-size: 2.67vw;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+.todayStatics .statisticsMainWrap .chartWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.todayStatics .statisticsMainWrap .chartWrap img {
+  width: 24.33vw;
+  height: 24.33vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: 0px 0px 4px 0px #00000040;
+  border-radius: 50%;
+}
+.todayStatics .statisticsTextWrap {
+  margin-top: 1.07vw;
+  background-color: white;
+  box-shadow: 0vw 0vw 0.53vw 0vw #00000040;
+  padding: 2.4vw 5.33vw;
+}
+.todayStatics .statisticsTextWrap p {
+  font-size: 2.67vw;
+  text-align: center;
+  line-height: 1.2;
+}
+.todayStatics .statisticsTextWrap p:last-child {
   margin-top: 1.33vw;
+}
+.todayStatics .statisticsTextWrap b {
+  font-size: 3.2vw;
 }
 /* 하루 관찰 */
 .todayObserve .cardMain {
