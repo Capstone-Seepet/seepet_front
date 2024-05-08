@@ -1,7 +1,34 @@
 import style from "./DogDiaryPage.module.css"
 import ExpendedHeader from "../../commons/compononets/ExpendedHeader/ExpendedHeader";
 import FooterLayout from "../../commons/compononets/footer/FooterLayout";
+import {useState} from "react";
+import {registerLocale} from "react-datepicker";
+import DatePicker from "react-datepicker";
+import ko from "date-fns/locale/ko";
+import 'react-datepicker/dist/react-datepicker.css';
+import Slider from "react-slick";
 const DogDiaryPage = () => {
+  registerLocale("ko", ko);
+  const today = (new Date((new Date).getFullYear(), (new Date).getMonth() +1, 0)).getDate();
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [dayList, setDayList] = useState(Array(today).fill().map((v,i)=> i+1));
+  const setDay = (date) => {
+    let dateYear = date.getFullYear();
+    let dateMonth = date.getMonth() + 1;
+    let dateFormat = new Date(dateYear,dateMonth,0)
+    setDayList(Array(dateFormat.getDate()).fill().map((v,i)=> i+1))
+  }
+  const settings = {
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "50px",
+    slidesToShow: 1,
+    speed: 500,
+    dots: false,
+    arrows: false,
+  };
+  console.log(dayList);
   return (
     <>
       <ExpendedHeader />
@@ -28,8 +55,29 @@ const DogDiaryPage = () => {
           </div>
           </div>
         </div>
-        <div className={style.callendarWrap}>
-
+        <div className={style.calenderWrap}>
+          <div className={style.calenderTitleWrap}>
+            <DatePicker
+              selected={selectedDate}
+              onChange={(date) => {
+                setSelectedDate(date)
+                setDay(date)
+              }}
+              dateFormat="yyyy년 MM월"
+              showMonthYearPicker
+              locale="ko"
+              className={style.datePicker}
+              popperClassName={style.datePickerPopper}
+              popperPlacement="top-start"
+            />
+          </div>
+          <Slider {...settings}>
+            {dayList.map((list,index) => {
+              return (
+                <div>{index}</div>
+              )
+            })}
+          </Slider>
         </div>
       </main>
       <FooterLayout />

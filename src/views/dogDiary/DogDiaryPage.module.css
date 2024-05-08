@@ -37,3 +37,22 @@
   text-align: center;
   font-size: 4vw;
 }
+.calenderWrap {
+
+}
+.calenderWrap .calenderTitleWrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+}
+.calenderWrap .datePicker {
+  outline: none;
+  border: none;
+  text-align: right;
+}
+.calenderWrap .datePickerPopper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+}
