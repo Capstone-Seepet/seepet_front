@@ -1,9 +1,11 @@
-import style from "./HeaderLayout.module.css";
-import { Link } from "react-router-dom";
-const HeaderLayout = () => {
+import style from "./ExpendedHeader.module.css";
+import {Link} from "react-router-dom";
+
+
+const ExpendedHeader = () => {
   return (
     <>
-      <header className={style.header}>
+      <header className={style.expendedHeader}>
         <div className={style.headerWrap}>
           <div className={style.headerLeft}>
             <Link to="/">
@@ -29,7 +31,7 @@ const HeaderLayout = () => {
         </div>
       </header>
     </>
-  );
-};
+  )
+}
 
-export default HeaderLayout;
+export default ExpendedHeader;

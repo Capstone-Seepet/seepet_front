@@ -1,0 +1,58 @@
+.diaryContainer {
+  background-color: var(--main-color);
+  border-bottom-right-radius: 4vw;
+  box-shadow: 1.07vw 1.07vw 2.13vw -1.07vw #00000040;
+}
+.diaryWrap {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 2.67vw 5.33vw 2.67vw;
+}
+.diaryWrap .diaryTitleWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.13vw 5.33vw;
+  background-color: white;
+  box-shadow: 0vw 0vw 0.53vw 0vw #00000040;
+}
+.diaryWrap .diaryTitleWrap p {
+  font-family: NanumBrush, serif;
+  font-size: 4.27vw;
+}
+.diaryWrap .diaryImageWrap {
+  margin-top: 2.67vw;
+}
+.diaryWrap .diaryImageWrap img {
+  width: 100%;
+}
+.diaryWrap .diaryTextWrap {
+  margin-top: 2.67vw;
+  padding: 2.67vw 5.33vw;
+  background-color: white;
+  box-shadow: 0vw 0vw 0.53vw 0vw #00000040;
+}
+.diaryWrap .diaryTextWrap p {
+  font-family: NanumBrush, serif;
+  text-align: center;
+  font-size: 4vw;
+}
+.calenderWrap {
+
+}
+.calenderWrap .calenderTitleWrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+}
+.calenderWrap .datePicker {
+  outline: none;
+  border: none;
+  text-align: right;
+}
+.calenderWrap .datePickerPopper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+}
