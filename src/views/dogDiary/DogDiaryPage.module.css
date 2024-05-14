@@ -57,6 +57,7 @@
   top: 50%;
 }
 .calenderWrap .weekBox {
+  width: 28px;
   display: flex;
   justify-content: center;
   align-items: center;

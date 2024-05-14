@@ -61,6 +61,8 @@ const DogDiaryPage = () => {
     dots: false,
     arrows: false,
     focusOnSelect: true,
+    slidesToScroll: 3,
+    swipeToSlide: true,
   };
 
   return (

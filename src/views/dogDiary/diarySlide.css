@@ -9,3 +9,8 @@
 .diarySlide .slick-track {
   padding: 10px 0;
 }
+.diarySlide .slick-slide > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
