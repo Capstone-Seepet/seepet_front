@@ -15,6 +15,9 @@ const DogStatisticsPage = () => {
                     className="statisticsCalendar"
                     maxDetail="month"/>
         </div>
+        <div className={style.statisticsWrap}>
+          <p className={style.title}>하루 요약</p>
+        </div>
       </main>
     </>
   )
