@@ -1,0 +1,6 @@
+.calendarWrap {
+  padding: 20px 10px;
+  background-color: var(--main-color);
+  border-bottom-right-radius: 4vw;
+  box-shadow: 1.07vw 1.07vw 2.13vw -1.07vw #00000040;
+}
