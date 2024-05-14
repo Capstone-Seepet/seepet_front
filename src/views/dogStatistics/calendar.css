@@ -2,7 +2,7 @@
 .statisticsCalendar span,
 .statisticsCalendar button
 {
-  font-family: JejuGothic,Serif;
+  font-family: JejuGothic, Serif;
   font-weight: normal;
 }
 .statisticsCalendar .react-calendar__navigation button {
