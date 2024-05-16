@@ -28,3 +28,9 @@ router 설정 저장 (react router)
 * react-chartjs-2 : 차트 라이브러리
 * react-calendar : 캘린더 라이브러리
 * axios : api 통신
+
+## 참고자료
+### s3 버켓 저장 방법
+https://velog.io/@rlorxl/%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%97%90%EC%84%9C-aws-s3%EC%97%90-%EC%9D%B4%EB%AF%B8%EC%A7%80%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EA%B8%B0
+### react uuid 설정 방법
+https://velog.io/@planethoon/%EB%A6%AC%EC%95%A1%ED%8A%B8%EC%97%90%EC%84%9C-UUID-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
