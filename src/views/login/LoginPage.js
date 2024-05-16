@@ -59,7 +59,7 @@ const LoginPage = () => {
                       onChange={handleSaveIdChange}
                     />
                     <label
-                      for="check1"
+                      htmlFor="check1"
                       className={style.saveInformCheck}
                     ></label>
                     아이디 저장
@@ -72,7 +72,7 @@ const LoginPage = () => {
                       onChange={handleAutoLoginChange}
                     />
                     <label
-                      for="check2"
+                      htmlFor="check2"
                       className={style.autoLoginCheck}
                     ></label>
                     자동 로그인
