@@ -1,4 +1,5 @@
 import style from "./DogDiaryPage.module.css"
+import "./diarySlide.css"
 import ExpendedHeader from "../../commons/compononets/ExpendedHeader/ExpendedHeader";
 import FooterLayout from "../../commons/compononets/footer/FooterLayout";
 import {useState} from "react";
@@ -9,26 +10,61 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Slider from "react-slick";
 const DogDiaryPage = () => {
   registerLocale("ko", ko);
-  const today = (new Date((new Date).getFullYear(), (new Date).getMonth() +1, 0)).getDate();
+  const setToday = (date) => {
+    let dateYear = date.getFullYear();
+    let dateMonth = date.getMonth() + 1;
+    let dateFormat = new Date(dateYear,dateMonth,0);
+    const weekDay = ['일','월','화','수','목','금','토']
+    let dateObjectList = [];
+
+    for(let i = 1 ; i <= dateFormat.getDate() ; i++) {
+      let dateObject = {
+        num : i,
+        week : weekDay[(new Date(date.getFullYear() , date.getMonth(), i)).getDay()],
+      }
+      dateObjectList.push(dateObject);
+    }
+    return dateObjectList;
+  }
+
+  const today = new Date();
+  const todayList = setToday(today);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [dayList, setDayList] = useState(Array(today).fill().map((v,i)=> i+1));
+  const [dayList, setDayList] = useState(todayList);
+
   const setDay = (date) => {
     let dateYear = date.getFullYear();
     let dateMonth = date.getMonth() + 1;
-    let dateFormat = new Date(dateYear,dateMonth,0)
-    setDayList(Array(dateFormat.getDate()).fill().map((v,i)=> i+1))
+    let dateFormat = new Date(dateYear,dateMonth,0);
+    const weekDay = ['일','월','화','수','목','금','토']
+    let dateObjectList = [];
+
+    for(let i = 1 ; i <= dateFormat.getDate() ; i++) {
+      let dateObject = {
+        num : i,
+        week :  weekDay[(new Date(date.getFullYear() , date.getMonth(), i)).getDay()],
+      }
+      dateObjectList.push(dateObject);
+    }
+    console.log(dateObjectList);
+
+    setDayList(dateObjectList);
   }
+
   const settings = {
-    className: "center",
+    className: "diarySlide",
     centerMode: true,
     infinite: true,
-    centerPadding: "50px",
+    centerPadding: "150px",
     slidesToShow: 1,
     speed: 500,
     dots: false,
     arrows: false,
+    focusOnSelect: true,
+    slidesToScroll: 3,
+    swipeToSlide: true,
   };
-  console.log(dayList);
+
   return (
     <>
       <ExpendedHeader />
@@ -36,8 +72,8 @@ const DogDiaryPage = () => {
         <div className={style.diaryContainer}>
           <div className={style.diaryWrap}>
           <div className={style.diaryTitleWrap}>
-            <p className={style.date}>2024년 4월 6일 토요일</p>
-            <p className={style.weather}>날씨: 맑음</p>
+            <p>2024년 4월 6일 토요일</p>
+            <p>날씨: 맑음</p>
           </div>
           <div className={style.diaryImageWrap}>
             <img src={process.env.PUBLIC_URL + "/images/testImage3.png"} alt="일기 사진"/>
@@ -74,7 +110,13 @@ const DogDiaryPage = () => {
           <Slider {...settings}>
             {dayList.map((list,index) => {
               return (
-                <div>{index}</div>
+                <>
+                  <div className={`${style.weekBox} weekBox`}>
+                    <p>{list.num}</p>
+                    <p>{list.week}</p>
+                    <img src={process.env.PUBLIC_URL + "/images/dogPaw.png"} alt=""/>
+                  </div>
+                </>
               )
             })}
           </Slider>

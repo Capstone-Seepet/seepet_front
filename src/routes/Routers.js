@@ -19,7 +19,7 @@ const Routers = () => (
       {/* 로그인, 회원가입 */}
       <Route path="/register" element={<RegisterPage />}></Route>
       <Route path="/login" element={<LoginPage />}></Route>
-      <Route path="/loginsuccess" element={<LoginSuccess />}></Route>
+      <Route path="/login/success" element={<LoginSuccess />}></Route>
 
       {/* 강아지등록 */}
       <Route path="/dog/register" element={<DogRegisterPage />}></Route>

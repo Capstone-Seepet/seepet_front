@@ -22,3 +22,9 @@ router 설정 저장 (react router)
 * react-app
 * react-router-dom
 * recoil
+* react-slick : 슬라이더 라이브러리
+* react-hook-form : validation 라이브러리
+* react-datepicker : 날짜 선택 라이브러리
+* react-chartjs-2 : 차트 라이브러리
+* react-calendar : 캘린더 라이브러리
+* axios : api 통신

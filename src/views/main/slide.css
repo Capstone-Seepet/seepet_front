@@ -1,29 +1,29 @@
 /* the parent */
-.slick-slide:not(.slick-active) {
+.slickContainer .slick-slide:not(.slick-active) {
   position: relative;
   transform: scale(0.85);
   transition: 1s;
 }
-.slick-slide.slick-active {
+.slickContainer .slick-slide.slick-active {
   transition: 0.5s;
   transform: scale(0.95);
 }
-.slick-dots {
+.slickContainer .slick-dots {
   position: absolute;
   top: -8.4vw;
   right: 0;
   width: 30%;
   height: 2.67vw;
 }
-.slick-dots li {
+.slickContainer .slick-dots li {
   margin: 0;
 }
-.slick-dots li button:before {
+.slickContainer .slick-dots li button:before {
   color: rgba(130, 76, 47, 1);
 }
-.slick-dots li.slick-active button:before {
+.slickContainer .slick-dots li.slick-active button:before {
   color: #824c2f;
 }
-.slick-dots li.slick-active {
+.slickContainer .slick-dots li.slick-active {
   transform: scale(1.5);
 }
