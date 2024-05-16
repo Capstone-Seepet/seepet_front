@@ -14,7 +14,7 @@ const Routers = () => (
       <Route path="/" element={<StartPage />}></Route>
       <Route path="/register" element={<RegisterPage />}></Route>
       <Route path="/login" element={<LoginPage />}></Route>
-      <Route path="/loginsuccess" element={<LoginSuccess />}></Route>
+      <Route path="/login/success" element={<LoginSuccess />}></Route>
       <Route path="/dog/register" element={<DogRegisterPage />}></Route>
       <Route path="/main" element={<MainPage />}></Route>
       <Route path="/dog/diary" element={<DogDiaryPage />}></Route>

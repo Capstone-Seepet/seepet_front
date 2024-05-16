@@ -7,3 +7,11 @@ export const postRegister = (data) => {
     data: data,
   })
 }
+
+export const postLogin = (data) => {
+  return Send({
+    method: 'post',
+    url: '/api/auth/login',
+    data: data
+  })
+}

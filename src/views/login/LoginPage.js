@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import {postLogin, postRegister} from "../../apis/Users";
 
 const LoginPage = () => {
   const [saveId, setSaveId] = useState(false);
@@ -15,7 +16,13 @@ const LoginPage = () => {
     event.preventDefault();
     console.log("saveID : " + saveId);
     console.log("autoLogin : " + autoLogin);
-    navigate("/");
+    postLogin(data).then(r => {
+      navigate("/login/success");
+    }).catch((r) => {
+      alert("오류가 발생하여습니다.문의하여 주십시오.");
+      console.log("Register Post Error : " + r);
+    });
+
   };
 
   const handleSaveIdChange = () => {
@@ -43,12 +50,12 @@ const LoginPage = () => {
                   <input
                     type="text"
                     placeholder="아이디 또는 이메일을 입력해주세요."
-                    {...register("id", { required: true })}
+                    {...register("loginId", { required: true })}
                   />
                   <input
                     type="password"
                     placeholder="비밀번호를 입력해주세요."
-                    {...register("pwd", { required: true })}
+                    {...register("password", { required: true })}
                   />
                 </div>
                 <div className={style.checkBox}>
