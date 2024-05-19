@@ -20,7 +20,7 @@ const LoginSuccess = () => {
               <Link to="/dog/register" className={style.enterInform}>
                 반려 동물 정보 입력하기
               </Link>
-              <button className={style.myPageBtn}>마이페이지로 이동</button>
+              <Link to="/setup" className={style.myPageBtn}>마이페이지로 이동</Link>
             </div>
           </div>
         </div>
