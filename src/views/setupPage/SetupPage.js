@@ -1,5 +1,6 @@
 import style from "./SetupPage.module.css";
 import FooterLayout from "../../commons/compononets/footer/FooterLayout";
+
 const SetupPage = () => {
   return (
     <div className={style.wrap}>

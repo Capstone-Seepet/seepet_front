@@ -1,5 +1,6 @@
 import style from "./HeaderLayout.module.css";
 import { Link } from "react-router-dom";
+import React from "react";
 const HeaderLayout = () => {
   return (
     <>
@@ -24,7 +25,9 @@ const HeaderLayout = () => {
           </div>
           <div className={style.headerRight}>
             <img src={process.env.PUBLIC_URL + "/images/icon_bell.svg"} alt="alarm" />
-            <img src={process.env.PUBLIC_URL + "/images/icon_people.svg"} alt="mypage" />
+            <Link to="/setup">
+              <img src={process.env.PUBLIC_URL + "/images/icon_people.svg"} alt="mypage" />
+            </Link>
           </div>
         </div>
       </header>
