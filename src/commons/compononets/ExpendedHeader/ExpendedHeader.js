@@ -1,9 +1,23 @@
 import style from "./ExpendedHeader.module.css";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import React from "react";
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import {authAtom} from "../../../stores/authAtom";
+import {usersAtom} from "../../../stores/usersAtom";
 
 
 const ExpendedHeader = () => {
+  const auth = useRecoilValue(authAtom);
+  const setAuth = useSetRecoilState(authAtom);
+  const setUser = useSetRecoilState(usersAtom);
+  const navigate = useNavigate()
+  const onClickLogout = () => {
+    localStorage.removeItem('AccessToken');
+    setAuth(null);
+    setUser({});
+    navigate('/login');
+  }
+
   return (
     <>
       <header className={style.expendedHeader}>
@@ -26,6 +40,7 @@ const ExpendedHeader = () => {
             />
           </div>
           <div className={style.headerRight}>
+            {auth ? <button className={style.logout} onClick={onClickLogout}>로그아웃</button> : <></>}
             <img src={process.env.PUBLIC_URL + "/images/icon_bell.svg"} alt="alarm" />
             <Link to="/setup">
               <img src={process.env.PUBLIC_URL + "/images/icon_people.svg"} alt="mypage" />

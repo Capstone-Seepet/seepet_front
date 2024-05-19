@@ -42,6 +42,13 @@
   justify-content: flex-end;
   margin-right: 4vw;
 }
+.header .headerRight .logout {
+  background-color: inherit;
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 12px;
+}
 .header .headerRight img {
   width: 5.33vw;
   height: 5.33vw;
