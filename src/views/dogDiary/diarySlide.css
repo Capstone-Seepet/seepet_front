@@ -1,0 +1,16 @@
+.diarySlide .slick-active .weekBox {
+  background-color: var(--main-color);
+}
+
+.diarySlide .slick-active .weekBox img {
+  opacity: 1;
+}
+
+.diarySlide .slick-track {
+  padding: 10px 0;
+}
+.diarySlide .slick-slide > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,11 +1,15 @@
 import style from "./SetupPage.module.css";
 import FooterLayout from "../../commons/compononets/footer/FooterLayout";
+import {Link, useNavigate} from "react-router-dom";
+
 const SetupPage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={style.wrap}>
       <div className={style.topWrap}>
         <div className={style.container}>
-          <button className={style.backBtn} />
+          <button className={style.backBtn} onClick={() => navigate(-1)}/>
           <img
             src={process.env.PUBLIC_URL + "/images/headerLampImg.png"}
             alt="lampImg"
@@ -55,7 +59,17 @@ const SetupPage = () => {
         </div>
       </div>
       <div className={style.bottomWrap}>
-        <div className={style.container}></div>
+        <div className={style.container}>
+          <h3>MYPAGE</h3>
+          <ul>
+            <li>
+              <Link to="/">
+                <img src={process.env.PUBLIC_URL + "/images/icon_user.svg"} alt="setup"/>
+                <p>회원 정보수정</p>
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
       <FooterLayout />
     </div>

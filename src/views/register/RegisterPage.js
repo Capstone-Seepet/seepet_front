@@ -4,6 +4,8 @@ import FooterLayout from "../../commons/compononets/footer/FooterLayout";
 import style from "./RegisterPage.module.css";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
+import {postRegister} from "../../apis/Users";
+import {useRef} from "react";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -11,8 +13,28 @@ const RegisterPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm();
-  const onSubmit = (data) => navigate('/login');
+  const password = useRef({});
+  password.current = watch("password", "");
+  const onSubmit = (data) => {
+    console.log(data);
+    let formattedData = {
+      loginId : data.loginId,
+      email : data.email,
+      name : data.name,
+      password : data.password,
+      phoneNumber : data.phoneStart + data.phoneMid + data.phoneEnd,
+    }
+    console.log(formattedData);
+    postRegister(data).then(r => {
+      alert("회원가입이 완료되었습니다.");
+      navigate('/login');
+    }).catch((r) => {
+      alert("오류가 발생하여습니다.문의하여 주십시오.");
+      console.log("Register Post Error : " + r);
+    });
+  }
 
   return (
     <>
@@ -25,13 +47,14 @@ const RegisterPage = () => {
               <div className={style.inputWrap}>
                 <legend>
                   아이디
-                  {errors.id ?
+                  {errors.loginId ?
                     <img src={process.env.PUBLIC_URL + "/images/icon_check_red.svg"} alt="check"/> :
                     <img src={process.env.PUBLIC_URL + "/images/icon_check.svg"} alt="check"/>}
                 </legend>
                 <input type="text"
-                       className={`${style.longInput} ${errors.id ? style.error: ""}`}
-                       {...register("id", {required: true})}/>
+                       className={`${style.longInput} ${errors.loginId ? style.error: ""}`}
+                       {...register("loginId", {required: true})}/>
+                {errors.loginId?.type === "required" && <span className={style.errorMessage}>아이디를 입력해 주세요.</span>}
               </div>
               <div className={style.inputWrap}>
                 <legend>
@@ -43,6 +66,7 @@ const RegisterPage = () => {
                 <input type="text"
                        className={`${style.longInput} ${errors.email ? style.error: ""}`}
                        {...register("email", {required: true})}/>
+                {errors.email?.type === "required" && <span className={style.errorMessage}>이메일을 입력해 주세요.</span>}
               </div>
               <div className={style.inputWrap}>
                 <legend>
@@ -54,6 +78,7 @@ const RegisterPage = () => {
                 <input type="text"
                        className={`${style.longInput} ${errors.name ? style.error: ""}`}
                        {...register("name", {required: true})}/>
+                {errors.name?.type === "required" && <span className={style.errorMessage}>이름을 입력해 주세요.</span>}
               </div>
               <div className={style.inputWrap}>
                 <legend>
@@ -65,6 +90,7 @@ const RegisterPage = () => {
                 <input type="password"
                        className={`${style.longInput} ${errors.password ? style.error: ""}`}
                        {...register("password", {required: true})}/>
+                {errors.password?.type === "required" && <span className={style.errorMessage}>비밀번호를 입력해 주세요.</span>}
               </div>
               <div className={style.inputWrap}>
                 <legend>
@@ -75,7 +101,13 @@ const RegisterPage = () => {
                 </legend>
                 <input type="password"
                        className={`${style.longInput} ${errors.passwordCheck ? style.error: ""}`}
-                       {...register("passwordCheck", {required: true})}/>
+                       {...register("passwordCheck", {
+                         required: true,
+                         validate: value =>
+                           value === password.current || "비밀번호가 일치하지 않습니다."
+                       })}/>
+                {errors.passwordCheck?.type === "required" && <span className={style.errorMessage}>비밀번호 확인을 입력해 주세요.</span>}
+                {errors.passwordCheck?.type === "validate" && <span className={style.errorMessage}>비밀번호가 일치하지 않습니다.</span>}
               </div>
               <div className={style.inputWrap}>
                 <legend>
@@ -97,6 +129,7 @@ const RegisterPage = () => {
                          className={`${style.shortInput} ${errors.phoneEnd ? style.error: ""}`}
                          {...register("phoneEnd", {required: true})}/>
                 </div>
+                {(errors.phoneStart || errors.phoneMid || errors.phoneEnd) && <span className={style.errorMessage}>휴대폰 번호를 입력해 주세요.</span>}
               </div>
               <div className={style.btnBox}>
                 <input type="submit" className={style.submitBtn} value="회원가입 하기"/>
