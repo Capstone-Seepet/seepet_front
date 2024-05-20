@@ -28,6 +28,8 @@ router 설정 저장 (react router)
 * react-chartjs-2 : 차트 라이브러리
 * react-calendar : 캘린더 라이브러리
 * axios : api 통신
+* react-uuid *uuid 라이브러리
+* aws-sdk s3버켓 통신 라이브러리
 
 ## 참고자료
 ### s3 버켓 저장 방법
