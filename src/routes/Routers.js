@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import StartPage from "../views/startPage/StartPage";
 import RegisterPage from "../views/register/RegisterPage";
@@ -10,6 +11,8 @@ import DogStatisticsPage from "../views/dogStatistics/DogStatisticsPage";
 import LiveStream from "../views/liveStream/liveStream";
 import SetupPage from "../views/setupPage/SetupPage";
 import PrivateRoute from "./PrivateRoute";
+import UserUpdatePage from "../views/userUpdate/UserUpdatePage";
+
 const Routers = () => (
   <BrowserRouter>
     <Routes>
@@ -32,6 +35,7 @@ const Routers = () => (
         <Route path="/livestream" element={<LiveStream />}></Route>
         {/* 환경설정 */}
         <Route path="/setup" element={<SetupPage />}></Route>
+        <Route path="/user/update" element={<UserUpdatePage />}></Route>
       </Route>
     </Routes>
   </BrowserRouter>

@@ -15,3 +15,18 @@ export const postLogin = (data) => {
     data: data
   })
 }
+
+export const getUser = (id) => {
+  return Send({
+    method: 'get',
+    url: `/api/members/${id}`,
+  })
+}
+
+export const patchUser = (id, data) => {
+  return Send({
+    method: 'patch',
+    url: `/api/members/${id}`,
+    data: data,
+  })
+}
