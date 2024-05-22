@@ -1,12 +1,12 @@
-import Send from './Send.js'
+import Send from "./Send.js";
 
 export const postRegister = (data) => {
   return Send({
-    method: 'post',
+    method: "post",
     url: `/api/auth/signup`,
     data: data,
-  })
-}
+  });
+};
 
 export const postLogin = (data) => {
   return Send({
@@ -30,3 +30,4 @@ export const patchUser = (id, data) => {
     data: data,
   })
 }
+

@@ -23,7 +23,8 @@ const Routers = () => (
       <Route path="/login/success" element={<LoginSuccess />}></Route>
 
       {/* 로그인 필요 화면 */}
-      <Route element={<PrivateRoute />}>
+      {/* <Route element={<PrivateRoute />}> */}
+      <Route>
         {/* 메인 */}
         <Route path="/main" element={<MainPage />}></Route>
         {/* 강아지등록 */}
