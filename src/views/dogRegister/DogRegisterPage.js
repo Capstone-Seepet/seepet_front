@@ -8,12 +8,20 @@ import FooterLayout from "../../commons/compononets/footer/FooterLayout";
 import style from "./DogRegisterPage.module.css";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { postDogRegister } from "../../apis/DogInfo";
+import { usersAtom } from "../../stores/usersAtom";
+import { useRecoilValue } from "recoil";
 
 const DogRegisterPage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [profileUrl, setProfile] = useState(null);
   const [gender, setGender] = useState("male");
+  const [imagePreviews, setImagePreviews] = useState([null, null, null, null]);
+  const [imagesUrl, setImagesUrl] = useState([null, null, null, null]);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const Users = localStorage.getItem("UserInfo");
 
   const navigate = useNavigate();
   const {
@@ -23,29 +31,79 @@ const DogRegisterPage = () => {
   } = useForm();
 
   const handleGenderChange = (event) => {
-    setGender(event.target.value); // 선택된 값으로 gender 값을 설정합니다.
+    setGender(event.target.value);
   };
 
   // 이미지 파일 업로드
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
+    const id = event.target.id;
+    const isProfile = id === "thumbnail" ? true : false;
+    const index =
+      id === "image" ? 0 : id === "image2" ? 1 : id === "image3" ? 2 : 3;
+    setImageIndex(index);
     setSelectedFile(file);
 
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewUrl(reader.result);
+      reader.onloadend = async () => {
+        // setPreviewUrl(reader.result);
+        if (isProfile) {
+          setPreviewUrl(reader.result);
+        } else {
+          setImagePreviews((prevPreviews) => {
+            const newPreviews = [...prevPreviews];
+            newPreviews[index] = reader.result;
+            return newPreviews;
+          });
+        }
       };
       reader.readAsDataURL(file);
     } else {
-      setPreviewUrl(null);
+      if (isProfile) {
+        setPreviewUrl(null);
+      } else {
+        setImagePreviews((prevPreviews) => {
+          const newPreviews = [...prevPreviews];
+          newPreviews[index] = null;
+          return newPreviews;
+        });
+      }
     }
   };
   useEffect(() => {
-    if (selectedFile !== null) {
-      handleUpload();
-    }
-  }, [selectedFile]);
+    const uploadProfile = async () => {
+      if (selectedFile !== null) {
+        try {
+          const uploadUrl = await handleUpload();
+          setProfile(uploadUrl);
+        } catch (error) {
+          console.error("업로드 실패:", error);
+        }
+      }
+    };
+
+    uploadProfile();
+  }, [previewUrl]);
+
+  useEffect(() => {
+    const uploadProfile = async () => {
+      if (selectedFile !== null) {
+        try {
+          const uploadUrl = await handleUpload();
+          setImagesUrl((imagesUrl) => {
+            const newUrl = [...imagesUrl];
+            newUrl[imageIndex] = uploadUrl;
+            return newUrl;
+          });
+        } catch (error) {
+          console.error("업로드 실패:", error);
+        }
+      }
+    };
+
+    uploadProfile();
+  }, [imagePreviews]);
 
   // 파일 업로드 핸들러
   const handleUpload = async () => {
@@ -80,35 +138,44 @@ const DogRegisterPage = () => {
     try {
       const data = await upload.promise();
       console.log("업로드 성공:", data.Location);
-      setProfile(data.Location);
-      return data;
+      // setProfile(data.Location);
+      return data.Location;
     } catch (err) {
       console.error("업로드 실패:", err);
       throw err;
     }
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, e) => {
+    e.preventDefault();
+    const UserInfo = JSON.parse(Users);
+    console.log("memberId : ", UserInfo.memberId);
     try {
-      console.log("Form Data:", data);
       const dataForm = {
         name: data.name,
         profile: profileUrl,
         gender: gender,
         adoptionDate: data.adoptionDate,
         birthDate: data.birthDate,
-        weithg: 0,
-        images: null,
+        weight: parseInt(data.weight),
+        images: imagesUrl,
       };
-
       console.log(dataForm);
 
-      navigate("/main");
+      postDogRegister(dataForm, UserInfo.memberId)
+        .then((response) => {
+          console.log(response.data);
+          alert("통신 성공!");
+          navigate("/main");
+        })
+        .catch((err) => {
+          console.log("error:", err);
+        });
     } catch (err) {
       console.error("업로드 실패:", err);
     }
 
-    navigate("/main");
+    // navigate("/main");
   };
 
   return (
@@ -189,75 +256,139 @@ const DogRegisterPage = () => {
                 <legend>이미지 등록</legend>
                 <div className={style.inputBox}>
                   <div className={style.fileWrap}>
-                    <label htmlFor="image">
-                      <img
-                        src={process.env.PUBLIC_URL + "/images/icon_plus.svg"}
-                        alt="plus"
-                      />
-                      <img
-                        src={
-                          process.env.PUBLIC_URL + "/images/icon_thumbnail.svg"
-                        }
-                        alt="이미지 등록"
-                      />
-                    </label>
-                    <input type="file" id="image" className={style.inputFile} />
+                    {imagePreviews[0] ? (
+                      <label
+                        htmlFor="image"
+                        style={{
+                          backgroundImage: imagePreviews[0]
+                            ? `url(${imagePreviews[0]})`
+                            : "none",
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      ></label>
+                    ) : (
+                      <label htmlFor="image">
+                        <img
+                          src={process.env.PUBLIC_URL + "/images/icon_plus.svg"}
+                          alt="plus"
+                        />
+                        <img
+                          src={
+                            process.env.PUBLIC_URL +
+                            "/images/icon_thumbnail.svg"
+                          }
+                          alt="이미지 등록"
+                        />
+                      </label>
+                    )}
+                    <input
+                      type="file"
+                      id="image"
+                      className={style.inputFile}
+                      onChange={handleFileChange}
+                    />
                   </div>
                   <div className={style.fileWrap}>
-                    <label htmlFor="image2">
-                      <img
-                        src={process.env.PUBLIC_URL + "/images/icon_plus.svg"}
-                        alt="plus"
-                      />
-                      <img
-                        src={
-                          process.env.PUBLIC_URL + "/images/icon_thumbnail.svg"
-                        }
-                        alt="이미지 등록"
-                      />
-                    </label>
+                    {imagePreviews[1] ? (
+                      <label
+                        htmlFor="image2"
+                        style={{
+                          backgroundImage: imagePreviews[1]
+                            ? `url(${imagePreviews[1]})`
+                            : "none",
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      ></label>
+                    ) : (
+                      <label htmlFor="image2">
+                        <img
+                          src={process.env.PUBLIC_URL + "/images/icon_plus.svg"}
+                          alt="plus"
+                        />
+                        <img
+                          src={
+                            process.env.PUBLIC_URL +
+                            "/images/icon_thumbnail.svg"
+                          }
+                          alt="이미지 등록"
+                        />
+                      </label>
+                    )}
                     <input
                       type="file"
                       id="image2"
                       className={style.inputFile}
+                      onChange={handleFileChange}
                     />
                   </div>
                   <div className={style.fileWrap}>
-                    <label htmlFor="image3">
-                      <img
-                        src={process.env.PUBLIC_URL + "/images/icon_plus.svg"}
-                        alt="plus"
-                      />
-                      <img
-                        src={
-                          process.env.PUBLIC_URL + "/images/icon_thumbnail.svg"
-                        }
-                        alt="이미지 등록"
-                      />
-                    </label>
+                    {imagePreviews[2] ? (
+                      <label
+                        htmlFor="image3"
+                        style={{
+                          backgroundImage: imagePreviews[2]
+                            ? `url(${imagePreviews[2]})`
+                            : "none",
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      ></label>
+                    ) : (
+                      <label htmlFor="image3">
+                        <img
+                          src={process.env.PUBLIC_URL + "/images/icon_plus.svg"}
+                          alt="plus"
+                        />
+                        <img
+                          src={
+                            process.env.PUBLIC_URL +
+                            "/images/icon_thumbnail.svg"
+                          }
+                          alt="이미지 등록"
+                        />
+                      </label>
+                    )}
                     <input
                       type="file"
                       id="image3"
                       className={style.inputFile}
+                      onChange={handleFileChange}
                     />
                   </div>
                   <div className={style.fileWrap}>
-                    <label htmlFor="image4">
-                      <img
-                        src={process.env.PUBLIC_URL + "/images/icon_plus.svg"}
-                        alt="plus"
-                      />
-                      <img
-                        src={
-                          process.env.PUBLIC_URL + "/images/icon_thumbnail.svg"
-                        }
-                        alt="이미지 등록"
-                      />
-                    </label>
+                    {imagePreviews[3] ? (
+                      <label
+                        htmlFor="image4"
+                        style={{
+                          backgroundImage: imagePreviews[3]
+                            ? `url(${imagePreviews[3]})`
+                            : "none",
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      ></label>
+                    ) : (
+                      <label htmlFor="image4">
+                        <img
+                          src={process.env.PUBLIC_URL + "/images/icon_plus.svg"}
+                          alt="plus"
+                        />
+                        <img
+                          src={
+                            process.env.PUBLIC_URL +
+                            "/images/icon_thumbnail.svg"
+                          }
+                          alt="이미지 등록"
+                        />
+                      </label>
+                    )}
                     <input
                       type="file"
                       id="image4"
                       className={style.inputFile}
+                      onChange={handleFileChange}
                     />
                   </div>
                 </div>
@@ -271,7 +402,6 @@ const DogRegisterPage = () => {
                       id="male"
                       name="gender"
                       value="male"
-                      // checked={gender === "male"} // male이 선택되었을 때 true로 설정됩니다.
                       onChange={handleGenderChange}
                     />
                     <label htmlFor="male">
@@ -291,7 +421,6 @@ const DogRegisterPage = () => {
                       id="female"
                       name="gender"
                       value="female"
-                      // checked={gender === "female"} // female이 선택되었을 때 true로 설정됩니다.
                       onChange={handleGenderChange}
                     />
 
