@@ -5,10 +5,10 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {postLogin, postRegister} from "../../apis/Users";
-import {useSetRecoilState} from "recoil";
-import {usersAtom} from "../../stores/usersAtom";
-import {authAtom} from "../../stores/authAtom";
+import { postLogin, postRegister } from "../../apis/Users";
+import { useSetRecoilState } from "recoil";
+import { usersAtom } from "../../stores/usersAtom";
+import { authAtom } from "../../stores/authAtom";
 
 const LoginPage = () => {
   const [saveId, setSaveId] = useState(false);
@@ -20,15 +20,19 @@ const LoginPage = () => {
 
   const onSubmit = (data, event) => {
     event.preventDefault();
-    postLogin(data).then(r => {
-      localStorage.setItem('AccessToken', r.data.access_token);
-      setAuth(r.data.access_token);
-      setUsers(r.data);
-      navigate("/login/success");
-    }).catch((r) => {
-      alert("오류가 발생하여습니다.문의하여 주십시오.");
-      console.log("Register Post Error : " + r);
-    });
+    postLogin(data)
+      .then((r) => {
+        localStorage.setItem("AccessToken", r.data.access_token);
+        localStorage.setItem("UserInfo", JSON.stringify(r.data));
+        setAuth(r.data.access_token);
+        setUsers(r.data);
+
+        navigate("/login/success");
+      })
+      .catch((r) => {
+        alert("오류가 발생하여습니다.문의하여 주십시오.");
+        console.log("Register Post Error : " + r);
+      });
   };
 
   const handleSaveIdChange = () => {
