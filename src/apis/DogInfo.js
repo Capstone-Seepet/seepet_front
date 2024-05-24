@@ -1,9 +1,9 @@
-import Send from "./Send.js";
+import CertifiedSend from "./CertifiedSend.js";
 
-export const postDogRegister = (data) => {
-  return Send({
+export const postDogRegister = (data, userID) => {
+  return CertifiedSend({
     method: "post",
-    url: `/api/pets`,
+    url: `/api/pets?memberId=${userID}`,
     data: data,
   });
 };
