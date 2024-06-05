@@ -63,7 +63,7 @@ const SetupPage = () => {
           <h3>MYPAGE</h3>
           <ul>
             <li>
-              <Link to="/">
+              <Link to="/user/update">
                 <img src={process.env.PUBLIC_URL + "/images/icon_user.svg"} alt="setup"/>
                 <p>회원 정보수정</p>
               </Link>

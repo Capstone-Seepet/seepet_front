@@ -10,17 +10,20 @@ import DogDiaryPage from "../views/dogDiary/DogDiaryPage";
 import DogStatisticsPage from "../views/dogStatistics/DogStatisticsPage";
 import LiveStream from "../views/liveStream/liveStream";
 import SetupPage from "../views/setupPage/SetupPage";
-import PrivateRoute from "./PrivateRoute";
 import UserUpdatePage from "../views/userUpdate/UserUpdatePage";
+import PrivateRoute from "./PrivateRoute";
+import RestrictRoute from "./RestrictRoute";
 
 const Routers = () => (
   <BrowserRouter>
     <Routes>
       {/* 로그인, 회원가입 */}
-      <Route path="/" element={<StartPage />}></Route>
-      <Route path="/register" element={<RegisterPage />}></Route>
-      <Route path="/login" element={<LoginPage />}></Route>
-      <Route path="/login/success" element={<LoginSuccess />}></Route>
+      <Route element={<RestrictRoute />}>
+        <Route path="/" element={<StartPage />}></Route>
+        <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/login/success" element={<LoginSuccess />}></Route>
+      </Route>
 
       {/* 로그인 필요 화면 */}
       {/* <Route element={<PrivateRoute />}> */}

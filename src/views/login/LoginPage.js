@@ -30,7 +30,7 @@ const LoginPage = () => {
         navigate("/login/success");
       })
       .catch((r) => {
-        alert("오류가 발생하여습니다.문의하여 주십시오.");
+        alert("아이디나 비밀번호를 확인해 주세요.");
         console.log("Register Post Error : " + r);
       });
   };
