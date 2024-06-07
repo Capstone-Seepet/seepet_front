@@ -119,7 +119,7 @@ const MainPage = () => {
                         <p className={style.cardTitle}>하루 일기</p>
                       </div>
                       <div className={style.moreWrap}>
-                        <Link to={"/"}>일기 자세히 보기</Link>
+                        <Link to={"/dog/diary"}>일기 자세히 보기</Link>
                         <img src={process.env.PUBLIC_URL + "/images/icon_more.svg"} alt="더보기"/>
                       </div>
                     </div>
@@ -145,7 +145,7 @@ const MainPage = () => {
                         <p className={style.cardTitle}>하루 일과</p>
                       </div>
                       <div className={style.moreWrap}>
-                        <Link to={"/"}>상태확인 하러가기</Link>
+                        <Link to={"/dog/statistics"}>상태확인 하러가기</Link>
                         <img src={process.env.PUBLIC_URL + "/images/icon_more.svg"} alt="더보기"/>
                       </div>
                     </div>
@@ -186,10 +186,10 @@ const MainPage = () => {
                         <img src={process.env.PUBLIC_URL + "/images/testImage2.png"} alt=""/>
                       </div>
                       <div className={style.buttonWrap}>
-                        <button>
+                        <Link to="/livestream">
                           <img src={process.env.PUBLIC_URL + "/images/icon_play.svg"} alt=""/>
                           <p>재생</p>
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
