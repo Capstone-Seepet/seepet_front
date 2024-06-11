@@ -77,36 +77,34 @@ const MainPage = () => {
   const Users = localStorage.getItem("UserInfo");
   const [dogDiary, setDogDiary] = useState({});
 
-  useEffect(() => {
-    const UserInfo = JSON.parse(Users);
-    getDogId(UserInfo.memberId).then(r => {
+  const UserInfo = JSON.parse(Users);
+  getDogId(UserInfo.memberId).then(r => {
+    console.log(r);
+    setDogId(r.data);
+    console.log(getIdDogs);
+    // 강아지 정보 get
+    getDogInfo(r.data[0].petId).then(r => {
       console.log(r);
-      setDogId(r.data);
-      console.log(getIdDogs);
-      // 강아지 정보 get
-      getDogInfo(r.data[0].petId).then(r => {
-        console.log(r);
-        setDogInfo(r.data)
-      });
-      // 강아지 일기 get
-      let diaryParams = {
-        petId : r.data[0].petId,
-        date : `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`,
+      setDogInfo(r.data)
+    });
+    // 강아지 일기 get
+    let diaryParams = {
+      petId : r.data[0].petId,
+      date : `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`,
+    }
+    getDogDiary(diaryParams).then(r => {
+      console.log(r)
+      setDogDiary(r.data);
+    }).catch(r => {
+      if(r.response.status === 400) {
+        setDogDiary({
+          dateTime: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`,
+          massage: '일기 작성이 완료 되지 않았습니다.',
+          error: true,
+        })
       }
-      getDogDiary(diaryParams).then(r => {
-        console.log(r)
-        setDogDiary(r.data);
-      }).catch(r => {
-        if(r.response.status === 400) {
-          setDogDiary({
-            dateTime: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`,
-            massage: '일기 작성이 완료 되지 않았습니다.',
-            error: true,
-          })
-        }
-      })
     })
-  }, []);
+  })
 
   return (
     <>
