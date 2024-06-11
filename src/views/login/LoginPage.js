@@ -9,6 +9,7 @@ import { postLogin, postRegister } from "../../apis/Users";
 import { useSetRecoilState } from "recoil";
 import { usersAtom } from "../../stores/usersAtom";
 import { authAtom } from "../../stores/authAtom";
+import {dogAtom} from "../../stores/dogAtom";
 
 const LoginPage = () => {
   const [saveId, setSaveId] = useState(false);

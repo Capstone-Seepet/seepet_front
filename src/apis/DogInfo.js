@@ -7,3 +7,10 @@ export const postDogRegister = (data, userID) => {
     data: data,
   });
 };
+
+export const getDogId = (userID) => {
+  return CertifiedSend({
+    method: "get",
+    url: `/api/${userID}/setting`
+  })
+}

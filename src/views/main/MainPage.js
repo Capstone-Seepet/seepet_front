@@ -9,6 +9,11 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import ExpendedHeader from "../../commons/compononets/ExpendedHeader/ExpendedHeader";
 import {externalTooltipHandler} from "./TooltipHandler";
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import {dogAtom} from "../../stores/dogAtom";
+import {useEffect} from "react";
+import {getDogId} from "../../apis/DogInfo";
+import {usersAtom} from "../../stores/usersAtom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -65,6 +70,17 @@ const MainPage = () => {
       },
     },
   };
+  const setDogs = useSetRecoilState(dogAtom);
+  const getDogs = useRecoilValue(dogAtom);
+  const Users = localStorage.getItem("UserInfo");
+
+  useEffect(() => {
+    const UserInfo = JSON.parse(Users);
+    getDogId(UserInfo.memberId).then(r => {
+      console.log(r);
+      setDogs(r.data);
+    })
+  }, []);
 
   return (
     <>
