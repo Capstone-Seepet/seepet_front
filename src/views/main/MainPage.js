@@ -96,6 +96,14 @@ const MainPage = () => {
       getDogDiary(diaryParams).then(r => {
         console.log(r)
         setDogDiary(r.data);
+      }).catch(r => {
+        if(r.response.status === 400) {
+          setDogDiary({
+            dateTime: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`,
+            massage: '일기 작성이 완료 되지 않았습니다.',
+            error: true,
+          })
+        }
       })
     })
   }, []);
@@ -168,7 +176,9 @@ const MainPage = () => {
                         <p>날씨: 맑음</p>
                       </div>
                       <div className={style.diaryImageWrap}>
-                        <img src={process.env.PUBLIC_URL + "/images/testImage3.png"} alt="더보기"/>
+                        {
+                          dogDiary.error ?? <img src={process.env.PUBLIC_URL + "/images/testImage3.png"} alt="더보기"/>
+                        }
                       </div>
                       <div className={style.diaryTextWrap}>
                         <p>{dogDiary.message}</p>
