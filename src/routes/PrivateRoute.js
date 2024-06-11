@@ -4,7 +4,7 @@ import {authAtom} from "../stores/authAtom";
 
 const PrivateRoute = () => {
   const auth = useRecoilValue(authAtom);
-  return auth ? <Outlet /> : <Navigate to="login" />
+  return auth ? <Outlet /> : <Navigate to="/login" />
 }
 
 export default PrivateRoute

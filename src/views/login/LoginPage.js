@@ -27,7 +27,7 @@ const LoginPage = () => {
         localStorage.setItem("UserInfo", JSON.stringify(r.data));
         setAuth(r.data.access_token);
         setUsers(r.data);
-
+        alert("로그인 되었습니다");
         navigate("/login/success");
       })
       .catch((r) => {

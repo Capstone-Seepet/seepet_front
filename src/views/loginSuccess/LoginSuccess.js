@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 
 import style from "./LoginSuccess.module.css";
 import SharedHeader from "../../commons/compononets/SharedHeader/SharedHeader";
+import {useSetRecoilState} from "recoil";
+import {authAtom} from "../../stores/authAtom";
+import {usersAtom} from "../../stores/usersAtom";
+import {useEffect} from "react";
 const LoginSuccess = () => {
+
   return (
     <>
       <div className={style.wrap}>

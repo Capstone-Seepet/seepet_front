@@ -25,9 +25,9 @@ const Routers = () => (
       </Route>
 
       {/* 로그인 필요 화면 */}
-      {/* <Route element={<PrivateRoute />}> */}
+       <Route element={<PrivateRoute />}>
       <Route>
-        <Route path="/login/success" element={<LoginSuccess />}></Route>
+      <Route path="/login/success" element={<LoginSuccess />}></Route>
         {/* 메인 */}
         <Route path="/main" element={<MainPage />}></Route>
         {/* 강아지등록 */}
@@ -41,6 +41,7 @@ const Routers = () => (
         <Route path="/setup" element={<SetupPage />}></Route>
         <Route path="/user/update" element={<UserUpdatePage />}></Route>
       </Route>
+       </Route>
     </Routes>
   </BrowserRouter>
 );
