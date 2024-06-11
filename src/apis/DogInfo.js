@@ -14,3 +14,10 @@ export const getDogId = (userID) => {
     url: `/api/${userID}/setting`
   })
 }
+
+export const getDogInfo = (petID) => {
+  return CertifiedSend({
+    method: "get",
+    url: `/api/pets/${petID}`
+  })
+}

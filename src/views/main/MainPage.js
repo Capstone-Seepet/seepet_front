@@ -10,10 +10,10 @@ import { Doughnut } from 'react-chartjs-2';
 import ExpendedHeader from "../../commons/compononets/ExpendedHeader/ExpendedHeader";
 import {externalTooltipHandler} from "./TooltipHandler";
 import {useRecoilValue, useSetRecoilState} from "recoil";
-import {dogAtom} from "../../stores/dogAtom";
+import { dogsAtom} from "../../stores/dogAtom";
 import {useEffect} from "react";
-import {getDogId} from "../../apis/DogInfo";
-import {usersAtom} from "../../stores/usersAtom";
+import {getDogId, getDogInfo} from "../../apis/DogInfo";
+import {dogIdAtom} from "../../stores/dogIdAtom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -70,16 +70,24 @@ const MainPage = () => {
       },
     },
   };
-  const setDogs = useSetRecoilState(dogAtom);
-  const getDogs = useRecoilValue(dogAtom);
+  const setDogId = useSetRecoilState(dogIdAtom);
+  const getIdDogs = useRecoilValue(dogIdAtom);
+  const setDogInfo = useSetRecoilState(dogsAtom);
+  const getDogs = useRecoilValue(dogsAtom);
   const Users = localStorage.getItem("UserInfo");
 
   useEffect(() => {
     const UserInfo = JSON.parse(Users);
     getDogId(UserInfo.memberId).then(r => {
       console.log(r);
-      setDogs(r.data);
+      setDogId(r.data);
+      getDogInfo(r.data[0].petId).then(r => {
+        console.log(r);
+        setDogInfo(r.data)
+      })
     })
+    console.log(getIdDogs)
+
   }, []);
 
   return (
@@ -88,12 +96,12 @@ const MainPage = () => {
       <div className={style.dogInfoContainer}>
         <div className={style.dogInfoWrap}>
           <div className={style.dogThumbnailWrap}>
-            <img src={process.env.PUBLIC_URL + "/images/testImage.png"} className={style.dogThumbnail} alt="Mydog"/>
+            <img src={getDogs.profile} className={style.dogThumbnail} alt="Mydog"/>
           </div>
           <div className={style.dogTextWrap}>
             <span className={style.dogAge}>Lv. 4</span>
-            <p className={style.dogText}><b>쵸파</b> 와 함께한지</p>
-            <p className={style.dogText}><b>1460</b> 일 째</p>
+            <p className={style.dogText}><b>{getDogs.name}</b> 와 함께한지</p>
+            <p className={style.dogText}><b>{getDogs.adoptionDate}</b> 일 째</p>
             <ul className={style.dogSubInfoWrap}>
               <li>
                 <img src={process.env.PUBLIC_URL + "/images/icon_birth.svg"} alt="생일"/>
