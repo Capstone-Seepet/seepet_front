@@ -31,7 +31,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   box-shadow: 0vw 0vw 1.07vw 0vw #00000040;
   border-radius: 50%;
 }
@@ -69,7 +69,10 @@
 }
 
 .statisticsWrap .progressWrap progress::-webkit-progress-value {
-  background: #FF7456;
+  background: #ff7456;
   border-radius: 6.67vw;
   height: 1.33vw;
+}
+.todayBackground {
+  color: rgb(244, 109, 60);
 }

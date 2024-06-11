@@ -69,8 +69,8 @@
 /* login 완료 페이지 일경우 */
 /* 이미지 */
 .wrap .loginSuccessImg {
-  width: 34vh;
-  height: 30vh;
+  width: 39vh;
+  height: 37vh;
   position: absolute;
   bottom: -7.5vh;
   background-image: url("../../../../public/images/loginSuccessImg.png");

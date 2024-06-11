@@ -1,4 +1,5 @@
 import Send from "./Send.js";
+import CertifiedSend from "./CertifiedSend.js";
 
 export const postRegister = (data) => {
   return Send({
@@ -10,24 +11,23 @@ export const postRegister = (data) => {
 
 export const postLogin = (data) => {
   return Send({
-    method: 'post',
-    url: '/api/auth/login',
-    data: data
-  })
-}
+    method: "post",
+    url: "/api/auth/login",
+    data: data,
+  });
+};
 
 export const getUser = (id) => {
   return Send({
-    method: 'get',
+    method: "get",
     url: `/api/members/${id}`,
-  })
-}
+  });
+};
 
 export const patchUser = (id, data) => {
   return Send({
-    method: 'patch',
+    method: "patch",
     url: `/api/members/${id}`,
     data: data,
-  })
-}
-
+  });
+};
