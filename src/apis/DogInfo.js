@@ -10,21 +10,21 @@ export const postDogRegister = (data, userID) => {
 };
 
 export const getDogId = (userID) => {
-  return Send({
+  return CertifiedSend({
     method: "get",
     url: `/api/${userID}/setting`
   })
 }
 
 export const getDogInfo = (petID) => {
-  return Send({
+  return CertifiedSend({
     method: "get",
     url: `/api/pets/${petID}`
   })
 }
 
 export const getDogDiary = (params) => {
-  return Send({
+  return CertifiedSend({
     method: 'get',
     url: `/api/ai/message`,
     params: params,
