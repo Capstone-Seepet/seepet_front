@@ -1,4 +1,5 @@
 import CertifiedSend from "./CertifiedSend.js";
+import Send from "./Send.js";
 
 export const postDogRegister = (data, userID) => {
   return CertifiedSend({
@@ -9,14 +10,14 @@ export const postDogRegister = (data, userID) => {
 };
 
 export const getDogId = (userID) => {
-  return CertifiedSend({
+  return Send({
     method: "get",
     url: `/api/${userID}/setting`
   })
 }
 
 export const getDogInfo = (petID) => {
-  return CertifiedSend({
+  return Send({
     method: "get",
     url: `/api/pets/${petID}`
   })

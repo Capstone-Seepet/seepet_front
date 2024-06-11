@@ -81,12 +81,12 @@ const MainPage = () => {
     getDogId(UserInfo.memberId).then(r => {
       console.log(r);
       setDogId(r.data);
+      console.log(getIdDogs);
       getDogInfo(r.data[0].petId).then(r => {
         console.log(r);
         setDogInfo(r.data)
       })
     })
-    console.log(getIdDogs)
 
   }, []);
 
@@ -101,19 +101,19 @@ const MainPage = () => {
           <div className={style.dogTextWrap}>
             <span className={style.dogAge}>Lv. 4</span>
             <p className={style.dogText}><b>{getDogs.name}</b> 와 함께한지</p>
-            <p className={style.dogText}><b>{getDogs.adoptionDate}</b> 일 째</p>
+            <p className={style.dogText}><b>{Math.ceil(((new Date()).getTime() - (new Date(getDogs.adoptionDate)).getTime())/(1000*60*60*24))}</b> 일 째</p>
             <ul className={style.dogSubInfoWrap}>
               <li>
                 <img src={process.env.PUBLIC_URL + "/images/icon_birth.svg"} alt="생일"/>
-                <p>10/07</p>
+                <p>{`${new Date(getDogs.birthDate).getMonth()+1}월 ${new Date(getDogs.birthDate).getDate()}일`}</p>
               </li>
               <li>
                 <img src={process.env.PUBLIC_URL + "/images/icon_weight.svg"} alt="몸무게"/>
-                <p>5.3 <small>kg</small></p>
+                <p>{getDogs.weight} <small>kg</small></p>
               </li>
               <li>
                 <img src={process.env.PUBLIC_URL + "/images/icon_gender_female.svg"} alt="성별"/>
-                <p>암컷</p>
+                <p>{getDogs.gender == "male" ? "수컷" : "암컷"}</p>
               </li>
             </ul>
           </div>
@@ -124,8 +124,13 @@ const MainPage = () => {
             <p>산책가자멍!</p>
           </div>
           <div className={style.subDogList}>
-            <img src={process.env.PUBLIC_URL + "/images/testImage.png"} className={style.dogThumbnail} alt="Mydog"/>
-            <img src={process.env.PUBLIC_URL + "/images/testImage.png"} className={style.dogThumbnail} alt="Mydog"/>
+            {getIdDogs.map((dog) =>  {
+              return (
+                <>
+                  <img src={dog.profile} className={style.dogThumbnail} alt="Mydog"/>
+                </>
+              )
+            })}
           </div>
         </div>
       </div>
