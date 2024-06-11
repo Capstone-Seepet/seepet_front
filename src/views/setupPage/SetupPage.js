@@ -1,9 +1,12 @@
 import style from "./SetupPage.module.css";
 import FooterLayout from "../../commons/compononets/footer/FooterLayout";
 import {Link, useNavigate} from "react-router-dom";
+import {useRecoilValue} from "recoil";
+import {dogIdAtom} from "../../stores/dogIdAtom";
 
 const SetupPage = () => {
   const navigate = useNavigate();
+  const getIdDogs = useRecoilValue(dogIdAtom);
 
   return (
     <div className={style.wrap}>
@@ -23,7 +26,7 @@ const SetupPage = () => {
           <div className={style.informWrap}>
             <div className={style.informBox}>
               <span className={style.informTitle}>지금까지 수집한 일기</span>
-              <span className={style.informCont}>189개</span>
+              <span className={style.informCont}>1개</span>
             </div>
             <span className={style.vertical_line}></span>
             <div className={style.informBox}>
@@ -38,21 +41,19 @@ const SetupPage = () => {
         <div className={style.petContainer}>
           <div className={style.container}>
             <div className={style.leftBox}>
-              <div className={style.perBox}>
-                <div className={`${style.imgBox} ${style.img1}`}></div>
-                <span className={style.name}>쵸파</span>
-                <button className={style.editBtn}></button>
-              </div>
-              <div className={style.perBox}>
-                <div className={`${style.imgBox} ${style.img2}`}></div>
-                <span className={style.name}>또리</span>
-                <button className={style.editBtn}></button>
-              </div>
-              <div className={style.perBox}>
-                <div className={`${style.imgBox} ${style.img3}`}></div>
-                <span className={style.name}>낑깡</span>
-                <button className={style.editBtn}></button>
-              </div>
+              {getIdDogs.map((dog) =>  {
+                return (
+                  <>
+                    <div className={style.perBox}>
+                      <div className={`${style.imgBox}`}>
+                        <img src={dog.profile} alt="강아지"/>
+                      </div>
+                      <span className={style.name}>{dog.name}</span>
+                      <button className={style.editBtn}></button>
+                    </div>
+                  </>
+                )
+              })}
             </div>
             <button className={style.addPet}><Link to="/dog/register">+</Link></button>
           </div>
