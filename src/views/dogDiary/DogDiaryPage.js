@@ -33,7 +33,6 @@ const DogDiaryPage = () => {
   const today = new Date();
   const todayList = setToday(today);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedDay, setSelectedDay] = useState("");
   const [dayList, setDayList] = useState(todayList);
 
   const setDay = (date) => {
@@ -69,11 +68,14 @@ const DogDiaryPage = () => {
     swipeToSlide: true,
   };
   const getDogs = useRecoilValue(dogsAtom);
-  const [dogDiary, setDogDiary] = useState({});
+  const [dogDiary, setDogDiary] = useState({
+    dateTime: `${today.getFullYear()}-${today.getMonth()+1}-${1}`,
+    massage: '일기 작성이 완료 되지 않았습니다.',
+    error: true,
+  });
 
   const handleClickSlide = (item) => {
     console.log(getDogs);
-    setSelectedDay(item);
     let diaryParams = {
       petId: getDogs.id,
       date : `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2,"0")}-${String(item).padStart(2,"0")}`,
@@ -86,8 +88,8 @@ const DogDiaryPage = () => {
       console.log(r.response.status);
       if(r.response.status === 400) {
         setDogDiary({
-          dateTime: `${new Date(selectedDate).getFullYear()}-${new Date(selectedDate).getMonth()+1}-${selectedDay}`,
-          massage: '일기 작성이 완료 되지 않았씁니다.',
+          dateTime: `${new Date(selectedDate).getFullYear()}-${new Date(selectedDate).getMonth()+1}-${item}`,
+          massage: '일기 작성이 완료 되지 않았습니다.',
           error: true,
         })
       }

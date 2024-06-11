@@ -135,7 +135,7 @@
   width: 80%;
   height: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: row;
 }
@@ -159,6 +159,11 @@
   margin: 0 auto;
   margin-top: 12%;
   /* border: 0.27vw solid rgba(0, 0, 0, 0.3); */
+}
+.middleWrap .imgBox img {
+  width: 100%;
+  border-radius: 50px;
+  border: 0.27vw solid rgba(0, 0, 0, 0.3);
 }
 
 .img1,
