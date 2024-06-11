@@ -22,3 +22,11 @@ export const getDogInfo = (petID) => {
     url: `/api/pets/${petID}`
   })
 }
+
+export const getDogDiary = (params) => {
+  return Send({
+    method: 'get',
+    url: `/api/ai/message`,
+    params: params,
+  })
+}

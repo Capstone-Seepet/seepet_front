@@ -11,8 +11,8 @@ import ExpendedHeader from "../../commons/compononets/ExpendedHeader/ExpendedHea
 import {externalTooltipHandler} from "./TooltipHandler";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import { dogsAtom} from "../../stores/dogAtom";
-import {useEffect} from "react";
-import {getDogId, getDogInfo} from "../../apis/DogInfo";
+import {useEffect, useState} from "react";
+import {getDogDiary, getDogId, getDogInfo} from "../../apis/DogInfo";
 import {dogIdAtom} from "../../stores/dogIdAtom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -75,6 +75,7 @@ const MainPage = () => {
   const setDogInfo = useSetRecoilState(dogsAtom);
   const getDogs = useRecoilValue(dogsAtom);
   const Users = localStorage.getItem("UserInfo");
+  const [dogDiary, setDogDiary] = useState({});
 
   useEffect(() => {
     const UserInfo = JSON.parse(Users);
@@ -82,12 +83,21 @@ const MainPage = () => {
       console.log(r);
       setDogId(r.data);
       console.log(getIdDogs);
+      // 강아지 정보 get
       getDogInfo(r.data[0].petId).then(r => {
         console.log(r);
         setDogInfo(r.data)
+      });
+      // 강아지 일기 get
+      let diaryParams = {
+        petId : r.data[0].petId,
+        date : `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`,
+      }
+      getDogDiary(diaryParams).then(r => {
+        console.log(r)
+        setDogDiary(r.data);
       })
     })
-
   }, []);
 
   return (
@@ -136,7 +146,7 @@ const MainPage = () => {
       </div>
       <main>
         <div className={style.dogToday}>
-          <p className={style.title}>재롱이의 {formattedFull}</p>
+          <p className={style.title}>{getDogs.name}의 {formattedFull}</p>
           <div className={style.slideWrap}>
             <div className="slider-container">
               <Slider {...settings}>
@@ -161,7 +171,7 @@ const MainPage = () => {
                         <img src={process.env.PUBLIC_URL + "/images/testImage3.png"} alt="더보기"/>
                       </div>
                       <div className={style.diaryTextWrap}>
-                        <p>날씨가 따뜻했던 오늘, 언니가 나를 깨워줬어요. 너무나도 기분 좋은 아침이었어요! 그런데 아침밥을 기다리는데 시간이 조금 걸렸어요. 언니, 내 식사시간을 더 일찍 맞춰주세요! 오늘은 언니 옆에서 같이 자야지! -쵸파 드림-</p>
+                        <p>{dogDiary.message}</p>
                       </div>
                     </div>
                   </div>
