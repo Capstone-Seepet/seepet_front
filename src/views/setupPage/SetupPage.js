@@ -54,7 +54,7 @@ const SetupPage = () => {
                 <button className={style.editBtn}></button>
               </div>
             </div>
-            <button className={style.addPet}>+</button>
+            <button className={style.addPet}><Link to="/dog/register">+</Link></button>
           </div>
         </div>
       </div>
