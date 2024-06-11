@@ -23,7 +23,7 @@ const HeaderLayout = () => {
       <header className={style.header}>
         <div className={style.headerWrap}>
           <div className={style.headerLeft}>
-            <Link to="/">
+            <Link to="/main">
               <img
                 src={process.env.PUBLIC_URL + "/images/logo.svg"}
                 alt="Home"

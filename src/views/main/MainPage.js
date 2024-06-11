@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slide.css"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import ExpendedHeader from "../../commons/compononets/ExpendedHeader/ExpendedHeader";
@@ -76,6 +76,7 @@ const MainPage = () => {
   const getDogs = useRecoilValue(dogsAtom);
   const Users = localStorage.getItem("UserInfo");
   const [dogDiary, setDogDiary] = useState({});
+  const navigate = useNavigate()
 
   useEffect(() => {
     const UserInfo = JSON.parse(Users);
@@ -83,28 +84,35 @@ const MainPage = () => {
       console.log(r);
       setDogId(r.data);
       console.log(getIdDogs);
-      // 강아지 정보 get
-      getDogInfo(r.data[0].petId).then(r => {
-        console.log(r);
-        setDogInfo(r.data)
-      });
-      // 강아지 일기 get
-      let diaryParams = {
-        petId : r.data[0].petId,
-        date : `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`,
-      }
-      getDogDiary(diaryParams).then(r => {
-        console.log(r)
-        setDogDiary(r.data);
-      }).catch(r => {
-        if(r.response.status === 400) {
-          setDogDiary({
-            dateTime: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`,
-            massage: '일기 작성이 완료 되지 않았습니다.',
-            error: true,
-          })
+      if(r.data == undefined || r.data == {} || r.data.length === 0) {
+        alert("강아지 정보를 등록해주셔야 저희 서비스를 이용가능하십니다!");
+        navigate("/dog/register");
+      } else {
+        // 강아지 정보 get
+        getDogInfo(r.data[0].petId).then(r => {
+          console.log(r);
+          setDogInfo(r.data)
+        }).catch(r => {
+          console.error(r);
+        });
+        // 강아지 일기 get
+        let diaryParams = {
+          petId : r.data[0].petId,
+          date : `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`,
         }
-      })
+        getDogDiary(diaryParams).then(r => {
+          console.log(r)
+          setDogDiary(r.data);
+        }).catch(r => {
+          if(r.response.status === 400) {
+            setDogDiary({
+              dateTime: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`,
+              massage: '일기 작성이 완료 되지 않았습니다.',
+              error: true,
+            })
+          }
+        })
+      }
     })
   }, []);
 
