@@ -22,12 +22,12 @@ const Routers = () => (
         <Route path="/" element={<StartPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/login/success" element={<LoginSuccess />}></Route>
       </Route>
 
       {/* 로그인 필요 화면 */}
       {/* <Route element={<PrivateRoute />}> */}
       <Route>
+        <Route path="/login/success" element={<LoginSuccess />}></Route>
         {/* 메인 */}
         <Route path="/main" element={<MainPage />}></Route>
         {/* 강아지등록 */}

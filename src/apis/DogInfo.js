@@ -31,9 +31,10 @@ export const getDogDiary = (params) => {
   });
 };
 
-export const getStatistic = (id, date) => {
+export const getStatistic = (params) => {
   return CertifiedSend({
     method: "get",
-    url: `/api/actions?petId=${id}&date=${date}`,
+    url: `/api/actions`,
+    params: params,
   });
 };

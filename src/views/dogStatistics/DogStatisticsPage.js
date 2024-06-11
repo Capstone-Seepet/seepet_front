@@ -83,7 +83,11 @@ const DogStatisticsPage = () => {
   };
   //여기
   useEffect(() => {
-    getStatistic(Number(getDogId[0].petId), formatDate(value)).then(
+    let params = {
+      petId : getDogId[0].petId,
+      date: formatDate(value)
+    }
+    getStatistic(params).then(
       (response) => {
         const {
           bodyLower,
