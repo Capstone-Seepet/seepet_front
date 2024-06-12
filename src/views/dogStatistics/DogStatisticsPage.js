@@ -175,7 +175,7 @@ const DogStatisticsPage = () => {
       ],
     });
   }, [statistics]);
-
+  console.log(activeData)
   return (
     <>
       <ExpendedHeader />
@@ -197,7 +197,7 @@ const DogStatisticsPage = () => {
         <div className={style.statisticsWrap}>
           <p className={style.title}>하루 요약</p>
           <div className={style.chartWrap}>
-            <img src={getDogs.profile} alt="test" />
+            <img src={getDogs.profile} alt="dog" />
             <Doughnut data={data} options={options} />
           </div>
           <div className={style.progressWrap}>

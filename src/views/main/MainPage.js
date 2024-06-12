@@ -12,7 +12,7 @@ import {externalTooltipHandler} from "./TooltipHandler";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import { dogsAtom} from "../../stores/dogAtom";
 import React, {useEffect, useRef, useState} from "react";
-import {getDogDiary, getDogId, getDogInfo} from "../../apis/DogInfo";
+import {getDogDiary, getDogId, getDogInfo, getStatistic} from "../../apis/DogInfo";
 import {dogIdAtom} from "../../stores/dogIdAtom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -76,6 +76,7 @@ const MainPage = () => {
   const getDogs = useRecoilValue(dogsAtom);
   const Users = localStorage.getItem("UserInfo");
   const [dogDiary, setDogDiary] = useState({});
+  const [dogStatistics, setDogStatistics] = useState({})
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -110,6 +111,20 @@ const MainPage = () => {
               massage: '일기 작성이 완료 되지 않았습니다.',
               error: true,
             })
+          }
+        })
+        let params = {
+          petId : r.data[0].petId,
+          date: `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`,
+        }
+        getStatistic(params).then(r => {
+          console.log(r)
+          if(r.data.bodyLower ===0 && r.data.bodyScratch ===0 && r.data.sit ===0) {
+            setDogStatistics({
+              error: true,
+            })
+          } else {
+            setDogStatistics({error: false, ...r.data})
           }
         })
       }
@@ -221,22 +236,42 @@ const MainPage = () => {
                     <div className={style.cardMain}>
                       <div className={style.statisticsMainWrap}>
                         <div className={style.statisticsTitleWrap}>
-                          <img src={process.env.PUBLIC_URL + "/images/dog-emotions/icon_relax.svg"}
-                               className={style.dogEmotion}
-                               alt="감정"/>
+                            <img src={process.env.PUBLIC_URL + "/images/dog-emotions/icon_relax.svg"}
+                                 className={style.dogEmotion}
+                                 alt="감정"/>
                           <div className={style.dogMessage}>
                             <img src={process.env.PUBLIC_URL + "/images/background_massage_under.svg"} alt="성별"/>
-                            <p>오늘은 정말 행복한 하루 였어요!</p>
+                            {!dogStatistics.error ?
+                              <p>오늘은 정말 행복한 하루 였어요!</p>:
+                              <p>작성 중 입니다!</p>
+                            }
                           </div>
                         </div>
                         <div className={style.chartWrap}>
-                          <img src={getDogs.profile} alt="강아지"/>
-                          <Doughnut data={data} options={options}/>
+                          {!dogStatistics.error ?
+                            <>
+                              <img src={getDogs.profile} alt="강아지"/>
+                              <Doughnut data={data} options={options}/>
+                            </>
+                             :
+                            <div className={style.noBox}>
+                              <img src={process.env.PUBLIC_URL + "/images/icon_write.svg"} alt=""/>
+                              <img src={process.env.PUBLIC_URL + "/images/icon_loading.svg"} alt=""/>
+                            </div>
+                          }
                         </div>
                       </div>
                       <div className={style.statisticsTextWrap}>
-                        <p>쵸파는 오늘 <b>엎드리기</b>를 가장 많이 했어요!</p>
-                        <p>쵸파는 오늘 <b>마운팅</b>을 가장 적게 했어요!</p>
+                        {!dogStatistics.error ?
+                          <>
+                            <p>{getDogs.name}는 오늘 <b>엎드리기</b>를 가장 많이 했어요!</p>
+                            <p>{getDogs.name}는 오늘 <b>마운팅</b>을 가장 적게 했어요!</p>
+                          </> :
+                          <>
+                            <p>오늘 하루를 작성 중이에요!</p>
+                          </>
+                        }
+
                       </div>
                       {/*<img src={process.env.PUBLIC_URL + "/images/testImage4.png"} alt="테스트"/>*/}
                     </div>
