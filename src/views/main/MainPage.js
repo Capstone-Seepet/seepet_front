@@ -185,11 +185,19 @@ const MainPage = () => {
                       </div>
                       <div className={style.diaryImageWrap}>
                         {
-                          dogDiary.error ?? <img src={process.env.PUBLIC_URL + "/images/testImage3.png"} alt="더보기"/>
+                          !dogDiary.error ? 
+                            <img src={process.env.PUBLIC_URL + "/images/testImage3.png"} alt="더보기"/> :
+                            <div className={style.noBox}>
+                              <img src={process.env.PUBLIC_URL + "/images/icon_write.svg"} alt=""/>
+                              <img src={process.env.PUBLIC_URL + "/images/icon_loading.svg"} alt=""/>
+                            </div>
                         }
                       </div>
                       <div className={style.diaryTextWrap}>
-                        <p>{dogDiary.message}</p>
+                        {!dogDiary.error ?
+                          <p>{dogDiary.message}</p> :
+                          <p>작성 중 입니다!</p>
+                        }
                       </div>
                     </div>
                   </div>
@@ -218,7 +226,7 @@ const MainPage = () => {
                           </div>
                         </div>
                         <div className={style.chartWrap}>
-                          <img src={process.env.PUBLIC_URL + "/images/testImage.png"} alt="test"/>
+                          <img src={getDogs.profile} alt="강아지"/>
                           <Doughnut data={data} options={options}/>
                         </div>
                       </div>
