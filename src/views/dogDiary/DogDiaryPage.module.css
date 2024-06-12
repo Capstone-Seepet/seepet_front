@@ -26,6 +26,25 @@
 .diaryWrap .diaryImageWrap img {
   width: 100%;
 }
+.diaryImageWrap .noBox {
+  width: 100%;
+  height: 60vw;
+  position: relative;
+}
+.diaryImageWrap .noBox img:first-child{
+  width: 13.33vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.diaryImageWrap .noBox img:last-child{
+  width: 53.33vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 .diaryWrap .diaryTextWrap {
   margin-top: 2.67vw;
   padding: 2.67vw 5.33vw;

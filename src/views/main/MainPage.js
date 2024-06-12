@@ -11,7 +11,7 @@ import ExpendedHeader from "../../commons/compononets/ExpendedHeader/ExpendedHea
 import {externalTooltipHandler} from "./TooltipHandler";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import { dogsAtom} from "../../stores/dogAtom";
-import {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {getDogDiary, getDogId, getDogInfo} from "../../apis/DogInfo";
 import {dogIdAtom} from "../../stores/dogIdAtom";
 
@@ -115,7 +115,11 @@ const MainPage = () => {
       }
     })
   }, []);
-
+  // video
+  const videoRef= useRef();
+  const setPlayBackRate = () => {
+    videoRef.current.playbackRate = 0.5;
+  };
   return (
     <>
       <ExpendedHeader />
@@ -248,7 +252,17 @@ const MainPage = () => {
                     </div>
                     <div className={style.cardMain}>
                       <div className={style.videoWrap}>
-                        <img src={process.env.PUBLIC_URL + "/images/testImage2.png"} alt=""/>
+                        <video
+                          muted
+                          autoPlay
+                          loop
+                          ref={videoRef}
+                          width="100%"
+                          height="100%"
+                          onCanPlay={() => setPlayBackRate()}
+                        >
+                          <source src={process.env.PUBLIC_URL + "/video/dogVideo.mp4"} type="video/mp4" />
+                        </video>
                       </div>
                       <div className={style.buttonWrap}>
                         <Link to="/livestream">

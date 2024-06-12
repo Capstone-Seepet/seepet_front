@@ -108,14 +108,25 @@ const DogDiaryPage = () => {
           </div>
           <div className={style.diaryImageWrap}>
             {
-              !dogDiary.error ? <img src={process.env.PUBLIC_URL + "/images/testImage3.png"} alt="일기 사진"/> : <p>존재하는 다이어리가 없습니다.</p>
+              !dogDiary.error ? <img src={process.env.PUBLIC_URL + "/images/testImage3.png"} alt="일기 사진"/> :
+                <div className={style.noBox}>
+                  <img src={process.env.PUBLIC_URL + "/images/icon_write.svg"} alt=""/>
+                  <img src={process.env.PUBLIC_URL + "/images/icon_loading.svg"} alt=""/>
+                </div>
             }
           </div>
           <div className={style.diaryTextWrap}>
-            <p>
-              {dogDiary.message}
-            </p>
-            <p>-{getDogs.name} 드림-</p>
+            {
+              !dogDiary.error ?
+                <>
+                  <p>
+                    {dogDiary.message}
+                  </p>
+                  <p>-{getDogs.name} 드림-</p>
+              </> :
+                <p>작성 중 입니다!</p>
+            }
+
           </div>
           </div>
         </div>
