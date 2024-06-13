@@ -84,59 +84,61 @@ const DogStatisticsPage = () => {
   //여기
   useEffect(() => {
     let params = {
-      petId : getDogId[0].petId,
-      date: formatDate(value)
-    }
-    getStatistic(params).then(
-      (response) => {
-        const {
-          bodyLower,
-          bodyScratch,
-          bodyShake,
-          feetUp,
-          footUp,
-          heading,
-          lying,
-          mounting,
-          sit,
-          tailLow,
-          tailing,
-          turn,
-          walkRun,
-        } = response.data;
-        setStatistics({
-          bodyLower,
-          bodyScratch,
-          bodyShake,
-          feetUp,
-          footUp,
-          heading,
-          lying,
-          mounting,
-          sit,
-          tailLow,
-          tailing,
-          turn,
-          walkRun,
-        });
-      }
-    );
+      petId: getDogId[0].petId,
+      date: formatDate(value),
+    };
+    getStatistic(params).then((response) => {
+      const {
+        bodyLower,
+        bodyScratch,
+        bodyShake,
+        feetUp,
+        footUp,
+        heading,
+        lying,
+        mounting,
+        sit,
+        tailLow,
+        tailing,
+        turn,
+        walkRun,
+      } = response.data;
+      setStatistics({
+        bodyLower,
+        bodyScratch,
+        bodyShake,
+        feetUp,
+        footUp,
+        heading,
+        lying,
+        mounting,
+        sit,
+        tailLow,
+        tailing,
+        turn,
+        walkRun,
+      });
+    });
   }, [value]);
 
   useEffect(() => {
     const totalExceptMisc = Object.entries(statistics)
       .filter(
         ([key]) =>
-          !["bodyShake", "lying", "turn", "mounting", "bodyScratch"].includes(
-            key
-          )
+          ![
+            "bodyLower",
+            "bodyScratch",
+            "mounting",
+            "mounting",
+            "turn",
+          ].includes(key)
       )
       .reduce((acc, [key, value]) => acc + value, 0);
 
     const misc = Object.values(statistics)
       .filter(
         (value, index) =>
-          !["bodyShake", "lying", "turn", "mounting", "bodyScratch"].includes(
+          !["bodyLower", "bodyScratch", "mounting", "sit", "turn"].includes(
             Object.keys(statistics)[index]
           )
       )
@@ -147,7 +149,7 @@ const DogStatisticsPage = () => {
     const percentages = {};
     for (const key in statistics) {
       if (
-        ["bodyShake", "lying", "turn", "mounting", "bodyScratch"].includes(key)
+        ["bodyLower", "bodyScratch", "mounting", "sit", "turn"].includes(key)
       ) {
         percentages[key] = Math.floor((statistics[key] / total) * 1000);
       } else {
@@ -155,11 +157,11 @@ const DogStatisticsPage = () => {
       }
     }
     const tmpData = [
-      { label: "몸을 텀", value: percentages.turn || 0 },
-      { label: "엎드리기", value: percentages.lying || 0 },
-      { label: "빙글빙글 돎", value: percentages.bodyShake || 0 },
-      { label: "마운팅", value: percentages.mounting || 0 },
-      { label: "몸을 긁음", value: percentages.bodyScratch || 0 },
+      { label: "엎드리기", value: percentages.turn || 0 },
+      { label: "몸을 긁음", value: percentages.lying || 0 },
+      { label: "마운팅", value: percentages.bodyShake || 0 },
+      { label: "앉기", value: percentages.mounting || 0 },
+      { label: "돌기", value: percentages.bodyScratch || 0 },
       { label: "기타", value: percentages.misc / 10 || 0 },
     ];
 
@@ -175,7 +177,7 @@ const DogStatisticsPage = () => {
       ],
     });
   }, [statistics]);
-  console.log(activeData)
+  console.log(activeData);
   return (
     <>
       <ExpendedHeader />
