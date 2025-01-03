@@ -1,3 +1,21 @@
+# 프로젝트 소개
+반려견을 더 안전하고 직관적으로 관찰할 수 있는 어플리케이션
+반려견을 하루 동안 관찰할 수 있고, 바쁜 현대인들을 위해 반려견의 하루를 
+일기와 통계형태로 정리하여 알려주는 어플리케이션입니다.
+
+![image](https://github.com/user-attachments/assets/14ab1ae2-efa7-45f1-abb5-550fedf421ab)
+
+
+# 서비스 아키텍쳐
+![image](https://github.com/user-attachments/assets/3a03e140-00d1-4f65-9c2e-4924e90eadab)
+
+# AI 모델
+![image](https://github.com/user-attachments/assets/ba3c6f49-d162-40cb-a5d2-44d2f86f5f96)
+![image](https://github.com/user-attachments/assets/f7142eb3-92ef-4d16-9f0a-d0e8db171ec0)
+
+# AI 파이프라인
+![image](https://github.com/user-attachments/assets/86811f2c-331f-441a-9746-56e0ae2c8a68)
+
 ## 시작하기
 npm install
 npm start
